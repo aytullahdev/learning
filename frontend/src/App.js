@@ -1,8 +1,10 @@
 import { Link, Route , Routes} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import PageNotFound from "./errorhandle/PageNotFound";
 import Crashcourses from "./home/Crashcourses";
 import Statussection from "./home/Statussection";
 import Login from "./User/Login";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }
