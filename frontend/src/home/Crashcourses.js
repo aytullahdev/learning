@@ -6,7 +6,7 @@ const Crashcourses = () => {
       <h1 className="text-center font-bold text-5xl py-10 ">
         চলে এসেছে নতুন ক্র্যাশ কোর্স
       </h1>
-      <div className=" grid gap-5 grid-cols-2 lg:grid-cols-3 lg:w-3/4 mx-auto">
+      <div className=" grid gap-5 md:gap-10  md:grid-cols-3 grid-cols-2 lg:grid-cols-3 lg:w-3/4 mx-auto">
         {/* Cards */}
         <div className=" rounded shadow-sm border-[gray] overflow-hidden  hover:border-five border">
           <img
