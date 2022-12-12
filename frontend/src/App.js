@@ -18,7 +18,7 @@ function App() {
                <Link to="/">Home</Link>
             </div>
             <div>
-               <Link to="/login">Login</Link>
+               <Link to="/login"><span className="bg-five text-[white] p-2 rounded">Login</span></Link>
             </div>
         </div>
       </div>
