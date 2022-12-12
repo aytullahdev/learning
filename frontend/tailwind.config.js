@@ -9,6 +9,7 @@ module.exports = {
       'two': '#F9F7E6',
       'three': '#FFF1F2',
       'four': '#EAE9F8',
+      'five': '#1DAA55',
     },
   },
   plugins: [],

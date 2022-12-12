@@ -2,7 +2,7 @@ import React from "react";
 
 const Statussection = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 mx-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 ">
       {/* Card 2x2 */}
       <div className="grid grid-cols-2 lg:grid-cols-2 gap-10">
         <div className="bg-one text-black  rounded flex justify-center items-center flex-col p-5 ">
