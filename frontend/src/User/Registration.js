@@ -50,6 +50,7 @@ const Registration = () => {
            if(data._id){
              toast.success("Account Crated");
              localStorage.setItem('user',JSON.stringify(data));
+             setUser(data);
            }
           })
           .catch((err) => console.log(err));
