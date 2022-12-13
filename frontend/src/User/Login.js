@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -65,6 +66,9 @@ const Login = () => {
         >
           Login
         </button>
+      </div>
+      <div>
+         <p className=" text-[#074c74] text-md hover:underline"><Link to="/register">Create a account?</Link></p>
       </div>
     </div>
   );

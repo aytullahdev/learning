@@ -5,6 +5,7 @@ import Crashcourses from "./home/Crashcourses";
 import Statussection from "./home/Statussection";
 import Login from "./User/Login";
 import 'react-toastify/dist/ReactToastify.css';
+import Registration from "./User/Registration";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Registration/>}/>
         <Route path="*" element={<PageNotFound/>}/>
       </Routes>
       <ToastContainer/>
