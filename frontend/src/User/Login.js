@@ -1,12 +1,22 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate,  } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import useUserstate from "../hooks/useUserstate";
+import { ThemeContext } from "../App";
 const Login = () => {
+  const {user,setUser} = useContext(ThemeContext);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(user){
+        navigate('/') 
+    }
+    
+    
+  },[user])
   const { email, password } = userData;
   const setData = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -29,7 +39,10 @@ const Login = () => {
        }
        if(data._id){
          toast.success("Login Successful");
-         localStorage.setItem('user',JSON.stringify(data));
+         //setUser(data);
+          localStorage.setItem('user',JSON.stringify(data));
+          setUser(data)
+         
        }
       })
       .catch((err) => console.log(err));

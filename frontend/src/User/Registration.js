@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ThemeContext } from '../App';
 const Registration = () => {
     const [userData, setUserData] = useState({
         email: "",
@@ -8,7 +10,15 @@ const Registration = () => {
         name: "",
         cpwd: "",
       });
-
+      const {user,setUser} = useContext(ThemeContext)
+      const navigate = useNavigate();
+      useEffect(()=>{
+        if(user){
+            navigate('/') 
+        }
+        
+        
+      },[user])
       const { cpwd , name, email, password } = userData;
       const setData = (e) => {
         setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
