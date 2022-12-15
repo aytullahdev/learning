@@ -10,6 +10,7 @@ import useUserstate from "./hooks/useUserstate";
 import Profile from "./User/Profile";
 import React, { useContext, useState } from "react";
 import SecureUser from "./User/SecureUser";
+import Contentupload from "./admin/Contentupload";
 
 
 export const ThemeContext = React.createContext();
@@ -29,6 +30,9 @@ function App() {
         <div className="flex  space-x-10 flex-row justify-end items-center text-xl">
           <div>
             <Link to="/">Home</Link>
+          </div>
+          <div>
+            <Link to="/upload">Upload</Link>
           </div>
           {!user && (
             <div>
@@ -68,6 +72,7 @@ function App() {
         <Route path="/profile" element={<SecureUser ><Profile /></SecureUser> }/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/upload" element={<Contentupload/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer />

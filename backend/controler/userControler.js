@@ -57,7 +57,9 @@ const loginUser = asyncHandler( async (req,res)=>{
     }
 }
 )
-
+const uploadContent = asyncHandler( async (req,res)=>{
+    res.send("Get the point")
+})
 const getMe = (req,res)=>{
     res.json(req?.user);
 }
@@ -67,4 +69,4 @@ const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe }
+module.exports = { createUser , loginUser , getMe, uploadContent }
