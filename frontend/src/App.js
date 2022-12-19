@@ -8,16 +8,20 @@ import "react-toastify/dist/ReactToastify.css";
 import Registration from "./User/Registration";
 import useUserstate from "./hooks/useUserstate";
 import Profile from "./User/Profile";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SecureUser from "./User/SecureUser";
 import Contentupload from "./admin/Contentupload";
 
 
 export const ThemeContext = React.createContext();
 
-function App() {
+function  App() {
   const [user,setUser] =  useState(null);
-  
+  useEffect(()=>{
+    if(localStorage.getItem('user')){
+    setUser(JSON.stringify( localStorage.getItem('user')));
+    }
+  })
   return (
     <ThemeContext.Provider value={{user,setUser}}>
     <div className="App mx-10">
@@ -51,7 +55,7 @@ function App() {
                 </Link>
               </div>
               <div>
-                  <button className=" rounded text-lg p-2 bg-[#d6f2cfb0] text-white" onClick={()=>{setUser(null)}}>
+                  <button className=" rounded text-lg p-2 bg-[#d6f2cfb0] text-white" onClick={()=>{setUser(null);localStorage.clear('user')}}>
                      Logout
                   </button>
               </div>
@@ -72,7 +76,7 @@ function App() {
         <Route path="/profile" element={<SecureUser ><Profile /></SecureUser> }/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/upload" element={<Contentupload/>}/>
+        <Route path="/upload" element={<SecureUser><Contentupload/></SecureUser>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer />
