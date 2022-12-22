@@ -2,6 +2,8 @@ const asyncHandler = require('express-async-handler')
 const User = require('../modal/userModal')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
+
 const createUser = asyncHandler( async (req,res)=>{
     const {name,email,password} = req.body;
 
@@ -57,7 +59,16 @@ const loginUser = asyncHandler( async (req,res)=>{
     }
 }
 )
+const uploadContent = asyncHandler( async (req,res)=>{
+    if (!req.file) {
+        res.status(400);
+        throw new Error("There is no file attached");
+      }
+      console.log(req.courseData);
+    res.send(req.file);
 
+   // console.log(req.file,req.body);
+})
 const getMe = (req,res)=>{
     res.json(req?.user);
 }
@@ -67,4 +78,4 @@ const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe }
+module.exports = { createUser , loginUser , getMe, uploadContent }

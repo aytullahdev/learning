@@ -12,16 +12,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-connectDB();
+
 
 // routes
 
 app.use('/api/users',require('./routes/userRoutes'));
 // Error Handle
 
+
 app.use(errorHandler)
 
 
-app.listen(PORT,()=>{
+app.listen(PORT,async ()=>{
+    await connectDB();
     console.log("Server is running on port "+PORT);
 })
