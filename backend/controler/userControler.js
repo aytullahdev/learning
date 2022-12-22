@@ -2,8 +2,8 @@ const asyncHandler = require('express-async-handler')
 const User = require('../modal/userModal')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
-
+const Review = require('../modal/reviewModal')
+const Course = require('../modal/courseModal')
 const createUser = asyncHandler( async (req,res)=>{
     const {name,email,password} = req.body;
 
@@ -59,16 +59,49 @@ const loginUser = asyncHandler( async (req,res)=>{
     }
 }
 )
+const addReview = asyncHandler(async (req,res)=>{
+     const {review,courseid} = req.body;
+     if(!review || !courseid){
+        res.status(400);
+        throw new Error("Please provide all data");
+     }
+    //  console.log(req.user)
+     const newReview = await Review.create({
+        review,user:req.user._id,course:courseid
+      })
+     res.json(newReview);
+})
 const uploadContent = asyncHandler( async (req,res)=>{
     if (!req.file) {
         res.status(400);
         throw new Error("There is no file attached");
       }
-      console.log(req.courseData);
+     
     res.send(req.file);
 
    // console.log(req.file,req.body);
 })
+
+const addCourse = asyncHandler(async (req,res)=>{
+    const {tittle,price,img} = req.body;
+    if(!tittle || !price || !img){
+       res.status(400);
+       throw new Error("Please provide all data");
+    }
+    
+    const newCourse = await Course.create({
+        tittle,price,img
+    })
+    res.json(newCourse);
+})
+const getCourses = asyncHandler(async (req,res)=>{
+   const courses = await Course.find({})
+   res.json(courses)
+})
+const getReviews = asyncHandler(async (req,res)=>{
+    const reviews = await Review.find({})
+    res.json(reviews)
+ })
 const getMe = (req,res)=>{
     res.json(req?.user);
 }
@@ -78,4 +111,4 @@ const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe, uploadContent }
+module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews }
