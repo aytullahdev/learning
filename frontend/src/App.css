@@ -1,0 +1,19 @@
+.swiper-slide {
+  display: flex;
+  justify-content: space-around;
+  aspect-ratio: 1.5;
+}
+.swiper-button-next {
+  right: 2px;
+  left: auto;
+}
+.swiper-button-prev {
+  left: 2px;
+  right: auto;
+}
+.review-des {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}

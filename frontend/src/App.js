@@ -1,25 +1,34 @@
-import { Link, Route , Routes} from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import PageNotFound from "./errorhandle/PageNotFound";
 import Crashcourses from "./home/Crashcourses";
 import Statussection from "./home/Statussection";
 import Login from "./User/Login";
+import "react-toastify/dist/ReactToastify.css";
+import Registration from "./User/Registration";
+import useUserstate from "./hooks/useUserstate";
+import Profile from "./User/Profile";
+import React, { useContext, useEffect, useState } from "react";
+import SecureUser from "./User/SecureUser";
+import Contentupload from "./admin/Contentupload";
+import ReviewSlider from "./home/ReviewSlider";
+import Navbar from "./home/Navbar";
+import './App.css'
 
-function App() {
+
+export const ThemeContext = React.createContext();
+
+function  App() {
+  const [user,setUser] =  useState(null);
+  useEffect(()=>{
+    if(localStorage.getItem('user')){
+    setUser(JSON.stringify( localStorage.getItem('user')));
+    }
+  })
   return (
+    <ThemeContext.Provider value={{user,setUser}}>
     <div className="App mx-10">
-      <div className="py-2 grid grid-cols-2 gap-10">
-        <div>
-           <p className="text-4xl font-bold">Lear<span className=" text-five">ner</span></p>
-        </div>
-        <div className="flex  space-x-10 flex-row justify-end items-center text-xl">
-            <div>
-               <Link to="/">Home</Link>
-            </div>
-            <div>
-               <Link to="/login">Login</Link>
-            </div>
-        </div>
-      </div>
+      <Navbar/>
       <Routes>
         <Route
           path="/"
@@ -27,13 +36,19 @@ function App() {
             <>
               <Crashcourses />
               <Statussection />
+              <ReviewSlider/>
             </>
           }
         />
-        <Route path="/login" element={<Login/>} />
-        <Route path="*" element={<PageNotFound/>}/>
+        <Route path="/profile" element={<SecureUser ><Profile /></SecureUser> }/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/upload" element={<SecureUser><Contentupload/></SecureUser>}/>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
+    </ThemeContext.Provider>
   );
 }
 
