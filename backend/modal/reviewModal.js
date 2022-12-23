@@ -8,6 +8,8 @@ const reviewSchema= mongoose.Schema({
    },
    course:{
        type: mongoose.Schema.Types.ObjectId,
+       required: [ true, 'Please add a course'],
+       ref: 'Course'
    },
    review:{
        type: String,
