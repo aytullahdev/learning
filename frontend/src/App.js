@@ -14,6 +14,7 @@ import Contentupload from "./admin/Contentupload";
 import ReviewSlider from "./home/ReviewSlider";
 import Navbar from "./home/Navbar";
 import './App.css'
+import Footer from "./home/Footer";
 
 
 export const ThemeContext = React.createContext();
@@ -48,6 +49,7 @@ function  App() {
       </Routes>
       <ToastContainer />
     </div>
+    <Footer/>
     </ThemeContext.Provider>
   );
 }
