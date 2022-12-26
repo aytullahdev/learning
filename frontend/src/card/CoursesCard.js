@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CoursesCard = (props) => {
     return (
-        <div>
+        <Link to={`/course/${props.id}`}>
             <div className=" rounded shadow-sm border-[gray] overflow-hidden  hover:border-five border">
           <img
             src={props.img}
@@ -17,7 +18,7 @@ const CoursesCard = (props) => {
             </p>
           </div>
         </div>
-        </div>
+        </Link>
     );
 };
 

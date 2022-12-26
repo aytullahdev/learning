@@ -15,6 +15,7 @@ import ReviewSlider from "./home/ReviewSlider";
 import Navbar from "./home/Navbar";
 import './App.css'
 import Footer from "./home/Footer";
+import CourseDetails from "./card/CourseDetails";
 
 
 export const ThemeContext = React.createContext();
@@ -45,6 +46,7 @@ function  App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/upload" element={<SecureUser><Contentupload/></SecureUser>}/>
+        <Route path="/course/:courseID" element={<CourseDetails/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer />
