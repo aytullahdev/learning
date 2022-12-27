@@ -24,12 +24,12 @@ function  App() {
   const [user,setUser] =  useState(null);
   useEffect(()=>{
     if(localStorage.getItem('user')){
-    setUser(JSON.stringify( localStorage.getItem('user')));
+    setUser(JSON.parse( localStorage.getItem('user')));
     }
-  })
+  },[])
   return (
     <ThemeContext.Provider value={{user,setUser}}>
-    <div className="App mx-10">
+    <div className="App mx-10" >
       <Navbar/>
       <Routes>
         <Route
