@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews} = require('../controler/userControler');
+const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews} = require('../controler/userControler');
 const protect = require('../middleware/authMiddleware')
 const multer = require('multer')
 var storage = multer.diskStorage({
@@ -21,5 +21,6 @@ router.post('/upload',upload.single('uploadContent'),uploadContent)
 router.post('/addreview',protect,addReview)
 router.post('/addcourse',protect,addCourse)
 router.get('/getcourses',getCourses)
+router.get('/course/:id',getCourse)
 router.get('/getreviews',getReviews)
 module.exports = router;

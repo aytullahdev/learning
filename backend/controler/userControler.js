@@ -98,6 +98,15 @@ const getCourses = asyncHandler(async (req,res)=>{
    const courses = await Course.find({})
    res.json(courses)
 })
+const getCourse = asyncHandler(async (req,res) =>{
+    const id = req.params.id;
+    if(!id){
+        res.status(400);
+        throw new Error("No course found!");
+    }
+    const course = await Course.findById(id);
+    res.json(course);
+})
 const getReviews = asyncHandler(async (req,res)=>{
     const reviews = await Review.find({})
     res.json(reviews)
@@ -105,10 +114,11 @@ const getReviews = asyncHandler(async (req,res)=>{
 const getMe = (req,res)=>{
     res.json(req?.user);
 }
+
 // Genarate token
 
 const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews }
+module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse}
