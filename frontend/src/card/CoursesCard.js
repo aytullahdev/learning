@@ -23,9 +23,9 @@ const CoursesCard = (props) => {
               </button>
             </div>
           }
-          { user && !user.isAdmin &&
+          { ((!user) || (user && !user.isAdmin)) &&
             <div>
-              <Link to={`/course/${props.id}`} className="w-full text-[white] text-center mt-2 text-xl mx-auto block py-2 bg-five  hover:bg-[green] rounded">
+              <Link to={`/course/${props.id}`} className="w-full text-[white] text-center my-2 text-xl mx-auto block py-2 bg-five  hover:bg-[green] rounded">
                 Details
               </Link>
             </div>
