@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import PageNotFound from "./errorhandle/PageNotFound";
+import Catagories from "./home/Catagories";
 import Crashcourses from "./home/Crashcourses";
 import Statussection from "./home/Statussection";
 import Login from "./User/Login";
@@ -42,6 +43,7 @@ function  App() {
           path="/"
           element={
             <>
+              <Catagories />
               <Crashcourses />
               <Statussection />
               <ReviewSlider/>

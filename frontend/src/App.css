@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .swiper-slide {
   display: flex;
   justify-content: space-around;
@@ -17,3 +21,4 @@
   -webkit-line-clamp: 5;
   overflow: hidden;
 }
+
