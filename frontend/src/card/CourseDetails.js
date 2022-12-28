@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
 import { ThemeContext } from "../App";
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -17,11 +18,34 @@ const customStyles = {
 Modal.setAppElement("body");
 
 const CourseDetails = () => {
+  const { user } = useContext(ThemeContext);
   const { courseID } = useParams();
   const [courseData, setCoursesData] = useState(null);
   const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
+  const enrollCourse = (userID, courseID) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+    axios
+      .post(
+        "http://localhost:5556/api/users/enroll",
+        { userID, courseID },
+        config
+      )
+      .then((res) => {
+        if (res.data && res.data?._id) {
+          toast.success("Sucessfully Enrolled");
+        } else if (res.data && res.data?.message) {
+          toast.warning("Alrady Enrolled!");
+        } else {
+          toast.error("Server error please try again");
+        }
+      });
+  };
   function openModal() {
     setIsOpen(true);
   }
@@ -31,7 +55,7 @@ const CourseDetails = () => {
   function closeModal() {
     setIsOpen(false);
   }
-  const { user } = useContext(ThemeContext);
+
   useEffect(() => {
     fetch(`http://localhost:5556/api/users/course/${courseID}`)
       .then((res) => res.json())
@@ -74,7 +98,10 @@ const CourseDetails = () => {
               />
             </div>
             <div>
-              <button className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded">
+              <button
+                onClick={() => enrollCourse(user._id, courseData._id)}
+                className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
+              >
                 Enrol
               </button>
             </div>
