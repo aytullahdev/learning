@@ -9,7 +9,7 @@ const Catagories = () => {
         নিজের শেখা নিজেই গুছিয়ে নেয়ার যাত্রা শুরু হোক
       </h1>
       <div className="grid grid-cols-1 gap-3 px-5 sm:grid-cols-2 md:gap-10">
-        <Link to={`/development`}>
+        <Link to="/catagories/development">
           <div className="flex items-center border-0 rounded-lg p-7 bg-one">
             <div>
               <img
@@ -39,7 +39,7 @@ const Catagories = () => {
             </div>
           </div>
         </Link>
-        <Link to={`/design`}>
+        <Link to="/catagories/design">
           <div className="flex items-center border-0 rounded-lg p-7 bg-two">
             <div>
               <img
@@ -69,7 +69,7 @@ const Catagories = () => {
             </div>
           </div>
         </Link>
-        <Link to={`/programming`}>
+        <Link to="/catagories/programming">
           <div className="flex items-center border-0 rounded-lg p-7 bg-three">
             <div>
               <img
@@ -99,7 +99,7 @@ const Catagories = () => {
             </div>
           </div>
         </Link>
-        <Link to={`/software`}>
+        <Link to="/catagories/software">
           <div className="flex items-center border-0 rounded-lg p-7 bg-four">
             <div>
               <img

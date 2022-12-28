@@ -18,6 +18,7 @@ import './App.css'
 import Footer from "./home/Footer";
 import CourseDetails from "./card/CourseDetails";
 import axios from 'axios'
+import SingleCatagory from "./home/SingleCatagory";
 axios.interceptors.response.use(
   res => res,
   err => {
@@ -55,6 +56,7 @@ function  App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/upload" element={<SecureUser><Contentupload/></SecureUser>}/>
         <Route path="/course/:courseID" element={<CourseDetails/>}/>
+        <Route path="/catagories/:catagory" element={<SingleCatagory/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer />

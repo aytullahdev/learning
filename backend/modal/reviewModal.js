@@ -11,10 +11,16 @@ const reviewSchema= mongoose.Schema({
        required: [ true, 'Please add a course'],
        ref: 'Course'
    },
-   review:{
+   text:{
        type: String,
        required: [true, 'Please add a Review']
    },
+   rating:{
+        type: Number,
+        require: [true, "Please add a Rating"],
+        min: [ 1, 'Must be at least 1, got {VALUE}'],
+        max: [ 5, 'Must be below 5, got {VALUE}'],
+   }
    
 },
 {

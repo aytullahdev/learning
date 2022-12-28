@@ -62,16 +62,49 @@ const loginUser = asyncHandler( async (req,res)=>{
 }
 )
 const addReview = asyncHandler(async (req,res)=>{
-     const {review,courseid} = req.body;
+     const {review,courseid,rating, enrolledid} = req.body;
      if(!review || !courseid){
         res.status(400);
         throw new Error("Please provide all data");
      }
     //  console.log(req.user)
+     const findReview = await Review.findOne({user:req.user._id,course:courseid});
+     
+     if(findReview){
+        res.status(400);
+        throw new Error("Review Alrady added");
+     }
+     const updateEnroll = await Enrol.findOneAndUpdate({_id:enrolledid},{isReviewed:true})
+     if(!updateEnroll){
+        res.status(400);
+        throw new Error("Course status not updated!");
+     }
      const newReview = await Review.create({
-        review,user:req.user._id,course:courseid
+        text:review,user:req.user._id,course:courseid,rating
       })
      res.json(newReview);
+})
+const getReview = asyncHandler(async (req,res)=>{
+    const {courseid} = req.body;
+    //console.log(courseid)
+    const findReview = await Review.findOne({user:req.user._id,course:courseid});
+    if(!findReview){
+        res.status(400);
+        throw new Error("Something Wrong plz try again Later!");
+    }
+    res.json(findReview);
+})
+const updateReview = asyncHandler(async (req,res)=>{
+    const {review,courseid,rating, enrolledid} = req.body;
+     if(!review || !courseid){
+        res.status(400);
+        throw new Error("Please provide all data");
+     }
+    //  console.log(req.user)
+     const findReview = await Review.findOneAndUpdate({user:req.user._id,course:courseid},{text:review,rating});
+     res.json(findReview);
+    
+
 })
 const uploadContent = asyncHandler( async (req,res)=>{
     if (!req.file) {
@@ -144,4 +177,4 @@ const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse, enrolCourse, getEnrolCourse,}
+module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse, enrolCourse, getEnrolCourse, getReview, updateReview}

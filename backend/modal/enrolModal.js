@@ -10,6 +10,10 @@ const enrolSchema= mongoose.Schema({
        type: mongoose.Schema.Types.ObjectId,
        required: [ true, 'Please add a course'],
        ref: 'Course'
+   },
+   isReviewed:{
+        type: Boolean,
+        default: false,
    }
    
 },

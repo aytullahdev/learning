@@ -25,7 +25,7 @@ const EnrolCourses = () => {
         enrolled <span className=" text-[black]">courses</span>
       </h1>
       {courses && courses.length && (
-        <div>
+        <div className="grid grid-cols-1 gap-5">
           
           {/* Single Course */
           }
@@ -38,6 +38,9 @@ const EnrolCourses = () => {
                 tittle={e.course.tittle}
                 img={e.course.img}
                 createdAt={date}
+                id={e.course._id}
+                isReviewed={e.isReviewed}
+                enrolledid={e._id}
               />
             );
           })}
