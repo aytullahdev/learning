@@ -137,10 +137,11 @@ const getEnrolCourse = asyncHandler( async (req,res)=>{
      
      res.json( await Enrol.find({user:req.user._id}).populate('course'))
 })
+
 // Genarate token
 
 const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse, enrolCourse, getEnrolCourse}
+module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse, enrolCourse, getEnrolCourse,}
