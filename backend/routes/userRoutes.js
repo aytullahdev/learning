@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews} = require('../controler/userControler');
+const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews, enrolCourse, getEnrolCourse} = require('../controler/userControler');
 const protect = require('../middleware/authMiddleware')
 const multer = require('multer')
 var storage = multer.diskStorage({
@@ -23,4 +23,6 @@ router.post('/addcourse',protect,addCourse)
 router.get('/getcourses',getCourses)
 router.get('/course/:id',getCourse)
 router.get('/getreviews',getReviews)
+router.post('/enroll',protect,enrolCourse);
+router.get('/getenrollcourse',protect,getEnrolCourse);
 module.exports = router;

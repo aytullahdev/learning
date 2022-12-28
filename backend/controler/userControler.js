@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Review = require('../modal/reviewModal')
 const Course = require('../modal/courseModal')
+const Enrol = require('../modal/enrolModal')
 const createUser = asyncHandler( async (req,res)=>{
     const {name,email,password} = req.body;
 
@@ -114,11 +115,31 @@ const getReviews = asyncHandler(async (req,res)=>{
 const getMe = (req,res)=>{
     res.json(req?.user);
 }
+// Course enroll
+const enrolCourse = asyncHandler( async (req,res)=>{
+    const {userID, courseID} = req.body;
+    if(!userID || !courseID){
+        res.status(400);
+        throw new Error("Please provide all data!");
+    }
+    const findData = await Enrol.findOne({user:userID,course:courseID})
+    if(findData){
+        res.status(400);
+        throw new Error("Alrady enrolled!");
+    }
+   const result = await Enrol.create({user:userID,course:courseID})
 
+    res.json(result);
+    
+})
+const getEnrolCourse = asyncHandler( async (req,res)=>{
+     
+     res.json( await Enrol.find({user:req.user._id}).populate('course'))
+})
 // Genarate token
 
 const getToken = (id) =>{
     return jwt.sign({id}, process.env.DBPWD);
 }
 
-module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse}
+module.exports = { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses, getReviews, getCourse, enrolCourse, getEnrolCourse}

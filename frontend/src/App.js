@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import PageNotFound from "./errorhandle/PageNotFound";
 import Crashcourses from "./home/Crashcourses";
 import Statussection from "./home/Statussection";
@@ -16,7 +16,13 @@ import Navbar from "./home/Navbar";
 import './App.css'
 import Footer from "./home/Footer";
 import CourseDetails from "./card/CourseDetails";
-
+import axios from 'axios'
+axios.interceptors.response.use(
+  res => res,
+  err => {
+    toast.error(err.response.data.message);
+  }
+)
 
 export const ThemeContext = React.createContext();
 
