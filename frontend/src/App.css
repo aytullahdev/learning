@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .swiper-slide {
   display: flex;
   justify-content: space-around;
@@ -16,4 +20,8 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   overflow: hidden;
+}
+
+.catagory-color{
+  background-color:rgb(252, 212, 163)
 }

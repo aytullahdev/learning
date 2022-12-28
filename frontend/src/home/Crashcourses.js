@@ -19,8 +19,6 @@ const Crashcourses = () => {
         {courses && courses.map(e=>{
         return <CoursesCard tittle={e.tittle} id={e._id} price={e.price} img={e.img} key={e._id}/>
       })}
-        
-
       </div>
     </div>
   );

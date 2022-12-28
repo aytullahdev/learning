@@ -46,7 +46,7 @@ const CourseDetails = () => {
 
   return (
     <div className="my-5">
-      {user && (
+      {user && courseData && (
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -57,19 +57,26 @@ const CourseDetails = () => {
           <div className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-2">
               <label htmlFor="">User Email</label>
-              <input type="text" className=" p-4 rounded-lg" value={user.email} disabled />
+              <input
+                type="text"
+                className=" p-4 rounded-lg"
+                value={user.email}
+                disabled
+              />
             </div>
             <div className="flex flex-col space-y-2">
               <label htmlFor="">Course Name</label>
-              <input type="text" className=" p-4 rounded-lg" value={courseData.tittle} disabled />
+              <input
+                type="text"
+                className=" p-4 rounded-lg"
+                value={courseData.tittle}
+                disabled
+              />
             </div>
             <div>
-            <button
-                  
-                  className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
-                >
-                  Enrol
-                </button>
+              <button className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded">
+                Enrol
+              </button>
             </div>
           </div>
         </Modal>
