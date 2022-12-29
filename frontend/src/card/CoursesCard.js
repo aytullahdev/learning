@@ -18,7 +18,7 @@ const CoursesCard = (props) => {
           </p>
           { user && user.isAdmin &&
             <div>
-              <button className="w-full text-[white] text-xl mt-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded">
+              <button className="w-full text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded">
                 Update
               </button>
             </div>

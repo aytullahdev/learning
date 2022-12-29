@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../App";
+import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const { user, setUser } = useContext(ThemeContext);
@@ -15,11 +16,16 @@ const Navbar = () => {
         <div>
           <Link to="/">Home</Link>
         </div>
+        
         {user && user.isAdmin && (
           <div>
             <Link to="/upload">Upload</Link>
           </div>
         )}
+        {
+          user && 
+          <Dropdown/>
+        }
         {!user && (
           <div>
             <Link to="/login">
@@ -27,7 +33,7 @@ const Navbar = () => {
             </Link>
           </div>
         )}
-        {user && (
+        {/* {user && (
           <div className="flex space-x-2 justify-center items-center">
             <div>
               <Link to="/profile">
@@ -48,7 +54,7 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
