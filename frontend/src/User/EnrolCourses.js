@@ -27,10 +27,11 @@ const EnrolCourses = () => {
       {courses && courses.length && (
         <div className="grid grid-cols-1 gap-5">
           
-          {/* Single Course */
+          {
+            /* Single Course */
           }
           {courses.map((e) => {
-            console.log(e)
+            
             // const date = e.createdAt.slice(0,10);
             const date = new Date(e.createdAt).toDateString();
             return (

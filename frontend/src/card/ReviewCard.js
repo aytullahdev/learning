@@ -53,7 +53,7 @@ const ReviewsCard = (props) => {
               alt=""
             />
             <div className="flex flex-col justify-center mx-2">
-              <h5 className="font-mono font-bold"></h5>
+              <h5 className="font-mono font-bold">{props.name}</h5>
               <span className="text-gray">Ceo,Apple</span>
             </div>
           </div>

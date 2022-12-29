@@ -13,6 +13,12 @@ const courseSchema= mongoose.Schema({
    img:{
         type: String,
         required: [true, 'Please add a course image']
+   },
+   catagory:{
+      type: String,
+      required: [true, 'Please add a Catagory'],
+      enum: ['development','designe', 'programming' , 'it & softwae']
+
    }
    
 },

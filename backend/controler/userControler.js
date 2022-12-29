@@ -159,7 +159,7 @@ const getCourse = asyncHandler(async (req, res) => {
   res.json(course);
 });
 const getReviews = asyncHandler(async (req, res) => {
-  const reviews = await Review.find({}).populate("user");
+  const reviews = await Review.find({}).populate("user","-_id -email -password -isAdmin");
   res.json(reviews);
 });
 const getMe = (req, res) => {
