@@ -19,7 +19,7 @@ const customStyles = {
 Modal.setAppElement("body");
 const SingleEnrollCourse = (props) => {
   const { user } = useContext(ThemeContext);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [text, setText] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -32,7 +32,7 @@ const SingleEnrollCourse = (props) => {
   function closeModal() {
     setIsOpen(false);
     setText("");
-    setRating(0);
+    setRating(1);
   }
   const handleRating = (rate) => {
     setRating(rate);
