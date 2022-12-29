@@ -31,7 +31,7 @@ const CourseDetails = () => {
         Authorization: `Bearer ${user.token}`,
       },
     };
-    axios
+    toast.promise(axios
       .post(
         "http://localhost:5556/api/users/enroll",
         { userID, courseID },
@@ -39,13 +39,15 @@ const CourseDetails = () => {
       )
       .then((res) => {
         if (res.data && res.data?._id) {
-          toast.success("Sucessfully Enrolled");
+          
+          closeModal()
         } else if (res.data && res.data?.message) {
-          toast.warning("Alrady Enrolled!");
-        } else {
-          toast.error("Server error please try again");
-        }
-      });
+          closeModal()
+        } 
+      }),{
+        pending: "Enrolling Courses",
+        success: "Course Enroll Sucessfully",
+      })
   };
   function openModal() {
     setIsOpen(true);

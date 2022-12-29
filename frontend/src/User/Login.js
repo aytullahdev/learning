@@ -26,7 +26,7 @@ const Login = () => {
       toast.error("Please provide all data!");
       return;
     }
-    fetch("http://localhost:5556/api/users/login", {
+    toast.promise( fetch("http://localhost:5556/api/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -45,7 +45,9 @@ const Login = () => {
          
        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err)),{
+        pending: "Login process..",
+      });
   };
   return (
     <div className="mx-auto  py-10 bg-white w-[250px] ">
