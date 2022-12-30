@@ -125,14 +125,15 @@ const updateReview = asyncHandler(async (req, res) => {
   res.json(findReview);
 });
 const uploadContent = asyncHandler(async (req, res) => {
-  if (!req.file) {
-    res.status(400);
-    throw new Error("There is no file attached");
-  }
+   //console.log(req.body);
+   const resData = await Course.create(req.body);
+   if(!resData){
+      res.status(400);
+      throw new Error("Failed to insert course Data");
+   }
+   res.json(resData);
 
-  res.send(req.file);
-
-  // console.log(req.file,req.body);
+  
 });
 
 const addCourse = asyncHandler(async (req, res) => {
@@ -188,7 +189,11 @@ const enrolCourse = asyncHandler(async (req, res) => {
 const getEnrolCourse = asyncHandler(async (req, res) => {
   res.json(await Enrol.find({ user: req.user._id }).populate("course"));
 });
-
+const getCatagory = asyncHandler(async (req,res)=>{
+   const key = req.params.id;
+   const resData = await Course.find({catagory: key});
+   res.json(resData);
+})
 // Genarate token
 
 const getToken = (id) => {
@@ -209,4 +214,5 @@ module.exports = {
   getEnrolCourse,
   getReview,
   updateReview,
+  getCatagory
 };

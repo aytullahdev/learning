@@ -48,7 +48,7 @@ function App() {
               <>
                 <Banner />
                 <Catagories />
-                <Crashcourses />
+                <Crashcourses lim={6}/>
                 <Statussection />
                 <ReviewSlider />
               </>

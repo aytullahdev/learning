@@ -105,7 +105,7 @@ const CourseDetails = () => {
                 onClick={() => enrollCourse(user._id, courseData._id)}
                 className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
               >
-                Enrol
+                Enrollment
               </button>
             </div>
           </div>
@@ -118,23 +118,20 @@ const CourseDetails = () => {
               {courseData.tittle}
             </h1>
             <p className="pb-10">
-              দৈনন্দিন জীবনে Spoken English-এ পারদর্শী ও আত্মবিশ্বাসী হয়ে উঠুন।
-              ইংরেজি বলায় দক্ষ হয়ে উঠতে এনরোল করুন “ঘরে বসে Spoken English”
-              কোর্সে।
+              {courseData.description}
             </p>
-            <h1 className="text-xl font-bold py-5">কোর্স ইন্সট্রাক্টর</h1>
+            <h1 className="text-xl font-bold py-5">Course Instructor</h1>
             <div className="flex shadow rounded p-5 ">
               <div className="w-1/3">
                 <img
                   className="w-20 h-20 rounded-full"
-                  src="https://cdn.10minuteschool.com/images/skills/lp/ms_onset.jpg"
+                  src={courseData.instructor_img}
                 />
               </div>
               <div className="w-2/3 ">
-                <p className="hover:text-five  pointer">Munzereen Shahid</p>
-                <p>BA, MA (English), University of Dhaka;</p>
-                <p>MSc (English), University of Oxford (UK);</p>
-                <p>IELTS: 8.5</p>
+                <p className="hover:text-five  pointer">{courseData.instructor_name}</p>
+                <p>{courseData.instructor_profession}</p>
+                <p>{courseData.instructor_qual}</p>
               </div>
             </div>
           </div>
@@ -154,7 +151,7 @@ const CourseDetails = () => {
                   onClick={openModal}
                   className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
                 >
-                  কোর্সটি কিনুন
+                  Enroll
                 </button>
               </div>
             </div>

@@ -18,11 +18,32 @@ const courseSchema= mongoose.Schema({
          type: String,
          required: [true, "Please add a course description"]
    },
+   duration:{
+         type: String,
+         required: [true, "Please add a course duration"]
+   },
    catagory:{
       type: String,
       required: [true, 'Please add a Catagory'],
-      enum: ['development','designe', 'programming' , 'it & software']
+      enum: ['development','design', 'programming' , 'it & software']
 
+   },
+   instructor_name:{
+      type: String,
+      required: [true, "Please add instructor name"]
+   },
+   instructor_profession:{
+      type: String,
+      required: [true, "Please add instructor profession"]
+      
+   },
+   instructor_qual:{
+      type: String,
+      required: [true, "Please add instructor qualification"],
+   },
+   instructor_img:{
+      type: String,
+      required: [true, "Please add instructor image"]
    }
    
 },

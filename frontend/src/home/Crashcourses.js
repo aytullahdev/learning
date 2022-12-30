@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import CoursesCard from "../card/CoursesCard";
 
-const Crashcourses = () => {
+const Crashcourses = (props) => {
   const [courses, setCourses] = useState(null);
   useEffect(() => {
     fetch("http://localhost:5556/api/users/getcourses")
       .then((response) => response.json())
       .then((data) => {
-        setCourses(data);
+        if(props.lim){
+          setCourses(data.slice(0,props.lim));
+        }else{
+          setCourses(data);
+        }
+        
       });
   }, []);
   return (
