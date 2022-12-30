@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews, enrolCourse, getEnrolCourse, getReview, updateReview, getCatagory} = require('../controler/userControler');
+const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews, enrolCourse, getEnrolCourse, getReview, updateReview, getCatagory, updateCourse} = require('../controler/userControler');
 const protect = require('../middleware/authMiddleware')
 
   
@@ -19,4 +19,5 @@ router.post('/enroll',protect,enrolCourse);
 router.get('/getenrollcourse',protect,getEnrolCourse);
 router.post('/getreview',protect,getReview)
 router.post('/updatereview',protect,updateReview)
+router.post('/updatecourse',protect,updateCourse);
 module.exports = router;

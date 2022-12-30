@@ -18,9 +18,9 @@ const CoursesCard = (props) => {
           </p>
           { user && user.isAdmin &&
             <div>
-              <button className="w-full text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded">
+              <Link to={`update/${props.id}`} className="w-full text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded">
                 Update
-              </button>
+              </Link>
             </div>
           }
           { ((!user) || (user && !user.isAdmin)) &&

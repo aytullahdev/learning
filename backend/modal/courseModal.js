@@ -8,7 +8,8 @@ const courseSchema= mongoose.Schema({
    },
    price:{
         type: Number,
-        required: [true, 'Please add a Prices']
+        required: [true, 'Please add a Prices'],
+        min: [ 1000, 'Must be at least 1, got {VALUE}'],
    },
    img:{
         type: String,

@@ -20,6 +20,7 @@ import Footer from "./home/Footer";
 import CourseDetails from "./card/CourseDetails";
 import axios from "axios";
 import SingleCatagory from "./home/SingleCatagory";
+import Updatecourse from "./admin/Updatecourse";
 
 axios.interceptors.response.use(
   (res) => res,
@@ -74,6 +75,7 @@ function App() {
           />
           <Route path="/course/:courseID" element={<CourseDetails />} />
           <Route path="/catagories/:catagory" element={<SingleCatagory />} />
+          <Route path="/update/:id" element={<Updatecourse/>}/>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ToastContainer />

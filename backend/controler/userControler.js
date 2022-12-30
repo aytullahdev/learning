@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const Review = require("../modal/reviewModal");
 const Course = require("../modal/courseModal");
 const Enrol = require("../modal/enrolModal");
+const { default: mongoose } = require("mongoose");
 const createUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -33,15 +34,16 @@ const createUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201);
-    res.json({_id: user._id,
+    res.json({
+      _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin
-      ,token: getToken(user._id)});
+      isAdmin: user.isAdmin,
+      token: getToken(user._id),
+    });
   } else {
     res.status(400);
     throw new Error("User not created please try again later!");
-    
   }
 });
 const loginUser = asyncHandler(async (req, res) => {
@@ -72,7 +74,7 @@ const addReview = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please provide all data");
   }
-  //  console.log(req.user)
+  //  //.log(req.user)
   const findReview = await Review.findOne({
     user: req.user._id,
     course: courseid,
@@ -100,7 +102,7 @@ const addReview = asyncHandler(async (req, res) => {
 });
 const getReview = asyncHandler(async (req, res) => {
   const { courseid } = req.body;
-  //console.log(courseid)
+  ////.log(courseid)
   const findReview = await Review.findOne({
     user: req.user._id,
     course: courseid,
@@ -117,7 +119,7 @@ const updateReview = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please provide all data");
   }
-  //  console.log(req.user)
+  //  //.log(req.user)
   const findReview = await Review.findOneAndUpdate(
     { user: req.user._id, course: courseid },
     { text: review, rating }
@@ -125,15 +127,13 @@ const updateReview = asyncHandler(async (req, res) => {
   res.json(findReview);
 });
 const uploadContent = asyncHandler(async (req, res) => {
-   //console.log(req.body);
-   const resData = await Course.create(req.body);
-   if(!resData){
-      res.status(400);
-      throw new Error("Failed to insert course Data");
-   }
-   res.json(resData);
-
-  
+  ////.log(req.body);
+  const resData = await Course.create(req.body);
+  if (!resData) {
+    res.status(400);
+    throw new Error("Failed to insert course Data");
+  }
+  res.json(resData);
 });
 
 const addCourse = asyncHandler(async (req, res) => {
@@ -156,15 +156,27 @@ const getCourses = asyncHandler(async (req, res) => {
 });
 const getCourse = asyncHandler(async (req, res) => {
   const id = req.params.id;
+  if(!mongoose.isValidObjectId(id)){
+    res.status(400);
+    throw new Error("Object is isn't valid");
+  }
+  //console.log(id);
   if (!id) {
     res.status(400);
     throw new Error("No course found!");
   }
-  const course = await Course.findById(id);
+  const course = await Course.findById(id).select([
+    "-createdAt",
+    "-updatedAt",
+    "-__v",
+  ]);
   res.json(course);
 });
 const getReviews = asyncHandler(async (req, res) => {
-  const reviews = await Review.find({}).populate("user","-_id -email -password -isAdmin");
+  const reviews = await Review.find({}).populate(
+    "user",
+    "-_id -email -password -isAdmin"
+  );
   res.json(reviews);
 });
 const getMe = (req, res) => {
@@ -189,16 +201,45 @@ const enrolCourse = asyncHandler(async (req, res) => {
 const getEnrolCourse = asyncHandler(async (req, res) => {
   res.json(await Enrol.find({ user: req.user._id }).populate("course"));
 });
-const getCatagory = asyncHandler(async (req,res)=>{
-   const key = req.params.id;
-   const resData = await Course.find({catagory: key});
-   res.json(resData);
-})
+const getCatagory = asyncHandler(async (req, res) => {
+  const key = req.params.id;
+  const resData = await Course.find({ catagory: key });
+  res.json(resData);
+});
 // Genarate token
 
 const getToken = (id) => {
   return jwt.sign({ id }, process.env.DBPWD);
 };
+
+const updateCourse = asyncHandler(async (req, res) => {
+  ////.log(req.body)
+  const {
+    tittle,
+    price,
+    img,
+    description,
+    duration,
+    catagory,
+    instructor_img,
+    instructor_name,
+    instructor_profession,
+    instructor_qual,
+  } = req.body;
+  const resData = await Course.findOneAndUpdate({ _id: req.body._id },{
+    tittle,
+    price,
+    img,
+    description,
+    duration,
+    catagory,
+    instructor_img,
+    instructor_name,
+    instructor_profession,
+    instructor_qual,
+  });
+  res.json(resData);
+});
 
 module.exports = {
   createUser,
@@ -214,5 +255,6 @@ module.exports = {
   getEnrolCourse,
   getReview,
   updateReview,
-  getCatagory
+  getCatagory,
+  updateCourse,
 };

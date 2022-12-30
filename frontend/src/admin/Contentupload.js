@@ -30,6 +30,19 @@ const Contentupload = () => {
   const { user } = useContext(ThemeContext);
 
   const handleSubmit = () => {
+    if( (!tittle ||
+        !price ||
+        !img ||
+        !description ||
+        !duration ||
+        !catagory ||
+        !instructor_img ||
+        !instructor_name ||
+        !instructor_profession ||
+        !instructor_qual) || price<1000 ){
+            toast.error("Please enter valid data!");
+            return;
+        }
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`,
