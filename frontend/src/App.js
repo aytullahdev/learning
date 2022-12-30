@@ -13,55 +13,72 @@ import React, { useContext, useEffect, useState } from "react";
 import SecureUser from "./User/SecureUser";
 import Contentupload from "./admin/Contentupload";
 import ReviewSlider from "./home/ReviewSlider";
+import Banner from "./home/Banner";
 import Navbar from "./home/Navbar";
-import './App.css'
+import "./App.css";
 import Footer from "./home/Footer";
 import CourseDetails from "./card/CourseDetails";
-import axios from 'axios'
+import axios from "axios";
 import SingleCatagory from "./home/SingleCatagory";
+
 axios.interceptors.response.use(
-  res => res,
-  err => {
+  (res) => res,
+  (err) => {
     toast.error(err.response.data.message);
   }
-)
+);
 
 export const ThemeContext = React.createContext();
 
-function  App() {
-  const [user,setUser] =  useState(null);
-  useEffect(()=>{
-    if(localStorage.getItem('user')){
-    setUser(JSON.parse( localStorage.getItem('user')));
+function App() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUser(JSON.parse(localStorage.getItem("user")));
     }
-  },[])
+  }, []);
   return (
-    <ThemeContext.Provider value={{user,setUser}}>
-    <div className="App mx-10" >
-      <Navbar/>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Catagories />
-              <Crashcourses />
-              <Statussection />
-              <ReviewSlider/>
-            </>
-          }
-        />
-        <Route path="/profile" element={<SecureUser ><Profile /></SecureUser> }/>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/upload" element={<SecureUser><Contentupload/></SecureUser>}/>
-        <Route path="/course/:courseID" element={<CourseDetails/>}/>
-        <Route path="/catagories/:catagory" element={<SingleCatagory/>}/>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <ToastContainer />
-    </div>
-    <Footer/>
+    <ThemeContext.Provider value={{ user, setUser }}>
+      <div className="App mx-10">
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner />
+                <Catagories />
+                <Crashcourses />
+                <Statussection />
+                <ReviewSlider />
+              </>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <SecureUser>
+                <Profile />
+              </SecureUser>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route
+            path="/upload"
+            element={
+              <SecureUser>
+                <Contentupload />
+              </SecureUser>
+            }
+          />
+          <Route path="/course/:courseID" element={<CourseDetails />} />
+          <Route path="/catagories/:catagory" element={<SingleCatagory />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <ToastContainer />
+      </div>
+      <Footer />
     </ThemeContext.Provider>
   );
 }
