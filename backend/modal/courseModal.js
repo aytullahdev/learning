@@ -14,10 +14,14 @@ const courseSchema= mongoose.Schema({
         type: String,
         required: [true, 'Please add a course image']
    },
+   description:{
+         type: String,
+         required: [true, "Please add a course description"]
+   },
    catagory:{
       type: String,
       required: [true, 'Please add a Catagory'],
-      enum: ['development','designe', 'programming' , 'it & softwae']
+      enum: ['development','designe', 'programming' , 'it & software']
 
    }
    

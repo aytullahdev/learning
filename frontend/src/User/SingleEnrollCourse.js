@@ -22,6 +22,7 @@ const SingleEnrollCourse = (props) => {
   const [rating, setRating] = useState(1);
   const [text, setText] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [isReviewed,setIsReviewed] = useState(props.isReviewed)
   function openModal() {
     setIsOpen(true);
     console.log("Clicked");
@@ -62,6 +63,8 @@ const SingleEnrollCourse = (props) => {
       .then((res) => {
         if (res.data && res.data?._id) {
           toast.success("Review Posted");
+          closeModal();
+          setIsReviewed(false)
         }
       });
   };
@@ -89,6 +92,7 @@ const SingleEnrollCourse = (props) => {
       .then((res) => {
         if (res.data && res.data?._id) {
           toast.success("Review Updated");
+          closeModal();
         }
       }),{
         pending: "Submiting Review..",
@@ -103,7 +107,7 @@ const SingleEnrollCourse = (props) => {
         Authorization: `Bearer ${user.token}`,
       },
     };
-    console.log(props.id,config)
+    //console.log(props.id,config)
     axios
   .post(
     "http://localhost:5556/api/users/getreview",
@@ -172,7 +176,7 @@ const SingleEnrollCourse = (props) => {
             </div>
 
             <div>
-             {!props.isReviewed &&
+             {!isReviewed &&
                <button
                onClick={() => submitReview()}
                className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
@@ -180,7 +184,7 @@ const SingleEnrollCourse = (props) => {
                Submit
              </button>
              }
-             {props.isReviewed &&
+             {isReviewed &&
                <button
                onClick={() => updateReview()}
                className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
@@ -201,7 +205,7 @@ const SingleEnrollCourse = (props) => {
           <p className="py-5 text-xl">Enrolled: {props.createdAt}</p>
         </div>
         <div>
-          { !props.isReviewed &&
+          { !isReviewed &&
             <button
               onClick={openModal}
               className="px-20 py-2 bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"
@@ -210,7 +214,7 @@ const SingleEnrollCourse = (props) => {
             </button>
           }
           {
-            props.isReviewed &&
+            isReviewed &&
             <button
               onClick={()=>{openModal();getReview();}}
               className="px-20 py-2 bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"

@@ -33,11 +33,15 @@ const createUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201);
-    res.json(user);
+    res.json({_id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin
+      ,token: getToken(user._id)});
   } else {
     res.status(400);
     throw new Error("User not created please try again later!");
-    å;
+    
   }
 });
 const loginUser = asyncHandler(async (req, res) => {
