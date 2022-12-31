@@ -48,7 +48,7 @@ const Registration = () => {
              toast.warning(data.message);
            }
            if(data._id){
-             toast.success("Account Crated");
+             toast.success("Account Created");
              localStorage.setItem('user',JSON.stringify(data));
              setUser(data);
            }
@@ -112,7 +112,7 @@ const Registration = () => {
               }}
               className="bg-five text-[white] text-xl rounded px-10 py-2"
             >
-              Login
+              Registration
             </button>
           </div>
         </div>

@@ -10,26 +10,33 @@ const CoursesCard = (props) => {
       <div className=" rounded shadow-sm border-[gray] overflow-hidden  hover:border-five border">
         <img src={props.img} alt="" />
         <div className="px-2">
-          <p className="text-lg py-2 font-bold">{props.tittle}</p>
-          <p>
-            <span className="text-xl font-bold text-five ">
-              ৳ {props.price}
+          <p className="text-lg py-2 font-bold title-des">{props.tittle}</p>
+          <p className="flex justify-between items-center">
+            <span className="text-xl font-bold text-five ">{props.price}৳</span>
+            <span className="text-md font-bold uppercase">
+              {props.catagory}
             </span>
           </p>
-          { user && user.isAdmin &&
+          {user && user.isAdmin && (
             <div>
-              <Link to={`update/${props.id}`} className="w-full text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded">
+              <Link
+                to={`update/${props.id}`}
+                className="w-full shadow-lg text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded"
+              >
                 Update
               </Link>
             </div>
-          }
-          { ((!user) || (user && !user.isAdmin)) &&
+          )}
+          {(!user || (user && !user.isAdmin)) && (
             <div>
-              <Link to={`/course/${props.id}`} className="w-full text-[white] text-center my-2 text-xl mx-auto block py-2 bg-five  hover:bg-[green] rounded">
+              <Link
+                to={`/course/${props.id}`}
+                className="w-full shadow-lg text-[white] text-center my-2 text-xl mx-auto block py-2 bg-five  hover:bg-[green] rounded"
+              >
                 Details
               </Link>
             </div>
-          }
+          )}
         </div>
       </div>
     </div>

@@ -16,6 +16,9 @@ const Navbar = () => {
         <div>
           <Link to="/">Home</Link>
         </div>
+        <div>
+          <Link to="/catagories/all">Courses</Link>
+        </div>
         
         {user && user.isAdmin && (
           <div>
