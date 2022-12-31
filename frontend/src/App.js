@@ -48,7 +48,7 @@ function App() {
             path="/"
             element={
               <>
-                <Banner />
+                <Banner lim={5} />
                 <Catagories />
                 <Crashcourses lim={6}/>
                 <Statussection />

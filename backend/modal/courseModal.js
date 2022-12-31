@@ -45,7 +45,12 @@ const courseSchema= mongoose.Schema({
    instructor_img:{
       type: String,
       required: [true, "Please add instructor image"]
+   },
+   total_enroll:{
+      type: Number,
+      default: 0
    }
+
    
 },
 {
