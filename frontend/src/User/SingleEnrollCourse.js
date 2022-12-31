@@ -198,7 +198,7 @@ const SingleEnrollCourse = (props) => {
       )}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 justify-center items-center p-5 hover:shadow-sm cursor-pointer rounded bg-[#ffffff]">
         <div>
-          <img className="w-20 lg:w-50 h-20 lg:h-50 rounded" src={props.img} alt="" />
+          <img className="w-20 lg:w-60 h-20 lg:h-60 rounded" src={props.img} alt="" />
         </div>
         <div>
           <h1 className="text-sm lg:text-3xl font-semibold ">{props.tittle}</h1>
