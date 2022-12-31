@@ -21,6 +21,7 @@ import CourseDetails from "./card/CourseDetails";
 import axios from "axios";
 import SingleCatagory from "./home/SingleCatagory";
 import Updatecourse from "./admin/Updatecourse";
+import EnrolCourses from "./User/EnrolCourses";
 
 axios.interceptors.response.use(
   (res) => res,
@@ -63,6 +64,7 @@ function App() {
               </SecureUser>
             }
           />
+          <Route path="/enrollcourses" element={<EnrolCourses/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route

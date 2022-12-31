@@ -9,6 +9,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/grid";
 import { ThemeContext } from "../App";
 import { useContext } from "react";
+import ReactStars from "react-rating-stars-component";
 
 const ReviewsCard = (props) => {
   const { user } = useContext(ThemeContext);
@@ -49,13 +50,25 @@ const ReviewsCard = (props) => {
           <div className="p-2 flex absolute inset-x-0 bottom-0">
             <img
               className="rounded-full w-1/4"
-              src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+              src={props.img}
               alt=""
             />
+            <div className="grid grid-cols-2 justify-between items-center">
             <div className="flex flex-col justify-center mx-2">
               <h5 className="font-mono font-bold">{props.name}</h5>
-              <span className="text-gray">Ceo,Apple</span>
+              <span className="text-gray text-xs">{props.profession}</span>
             </div>
+            <div>
+            <ReactStars
+                
+                value={props.rating}
+                activeColor="#ffd700"
+                edit={false}
+                
+              />
+            </div>
+            </div>
+
           </div>
         </div>
       </div>

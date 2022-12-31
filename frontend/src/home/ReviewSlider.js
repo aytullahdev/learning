@@ -37,7 +37,7 @@ const ReviewSlider = () => {
           {reviews &&
             reviews.map((e) => {
               return <SwiperSlide>
-                <ReviewCard name={e.user.name} comment={e.text} key={e._id}/>
+                <ReviewCard name={e.user.name} comment={e.text} key={e._id} img={e.user.img} rating={e.rating} profession={e.user.profession}/>
               </SwiperSlide>
             })}
         </Swiper>

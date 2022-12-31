@@ -39,6 +39,8 @@ const createUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      img: user.img,
+      profession: user.profession,
       token: getToken(user._id),
     });
   } else {
@@ -61,6 +63,8 @@ const loginUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      img: user.img,
+      profession: user.profession,
       token: getToken(user._id),
     });
   } else {
@@ -240,7 +244,15 @@ const updateCourse = asyncHandler(async (req, res) => {
   });
   res.json(resData);
 });
-
+const userUpdate = asyncHandler( async (req,res)=>{
+    const result = await User.findOneAndUpdate({_id:req.user._id},req.body.userdata)
+    if(!result){
+      res.status(400);
+      throw new Error("User isn't updated!");
+    }
+    console.log(req.body.userdata);
+    res.json(result);
+})
 module.exports = {
   createUser,
   loginUser,
@@ -257,4 +269,5 @@ module.exports = {
   updateReview,
   getCatagory,
   updateCourse,
+  userUpdate
 };
