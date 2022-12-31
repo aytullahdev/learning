@@ -14,7 +14,7 @@ const ReviewsCard = (props) => {
   const { user } = useContext(ThemeContext);
   return (
       <div>
-        <div className=" rounded w-[325px] shadow-sm border-[gray] overflow-hidden  hover:border-five border">
+        <div className="relative rounded w-[325px] h-[225px] shadow-sm border-[gray] overflow-hidden  hover:border-five border">
           <div className="flex mx-2 my-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const ReviewsCard = (props) => {
               {props.comment}
             </p>
           </div>
-          <div className="p-2 flex">
+          <div className="p-2 flex absolute inset-x-0 bottom-0">
             <img
               className="rounded-full w-1/4"
               src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
