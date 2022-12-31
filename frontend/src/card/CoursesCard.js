@@ -37,23 +37,6 @@ const CoursesCard = (props) => {
               </Link>
             </div>
           )}
-          <div>
-            <button 
-              data-tooltip-target="tooltip-default"
-              type="button"
-              class="text-white bg-[blue] hover:bg-[#0000ffed] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[blue] dark:hover:bg-[blue] dark:focus:ring-[blue]"
-            >
-              Default tooltip
-            </button>
-            <div
-              id="tooltip-default"
-              role="tooltip"
-              class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-[white] bg-[gray] rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-[gray]"
-            >
-              Tooltip content
-              <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
