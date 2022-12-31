@@ -17,6 +17,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    profession:{
+        type: String,
+        default: "N/A",
     }
 },
 {
