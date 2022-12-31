@@ -16,10 +16,8 @@
   -webkit-line-clamp: 4;
   overflow: hidden;
 }
+ 
 
-.banner-slide{
-  margin: 5px 100px;
-}
 .title-des{
   display: -webkit-box;
   -webkit-box-orient: vertical;

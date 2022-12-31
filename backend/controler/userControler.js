@@ -252,7 +252,7 @@ const userUpdate = asyncHandler( async (req,res)=>{
       res.status(400);
       throw new Error("User isn't updated!");
     }
-    console.log(req.body.userdata);
+   // console.log(req.body.userdata);
     res.json(result);
 })
 module.exports = {

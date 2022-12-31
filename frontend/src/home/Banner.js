@@ -43,14 +43,26 @@ const Banner = (props) => {
         <h1 className="text-center font-light text-[white] ">
           Find Your Best Course
         </h1>
-        <div className="banner-slide">
+        <div className="banner-slide px-2 lg:px-10">
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Grid]}
             spaceBetween={20}
-            slidesPerView={3}
+            slidesPerView={1}
             allowTouchMove={false}
             navigation={{ clickable: true }}
+            breakpoints={{
+              // when window width is >= 640px
+              300: {
+
+                slidesPerView: 1,
+              },
+              // when window width is >= 768px
+              768: {
+                
+                slidesPerView: 3,
+              },
+            }}
           >
             {courses &&
               courses.map((e) => {

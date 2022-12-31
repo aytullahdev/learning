@@ -41,7 +41,7 @@ function App() {
   }, []);
   return (
     <ThemeContext.Provider value={{ user, setUser }}>
-      <div className="App mx-10">
+      <div className="App mx-2 lg:mx-10">
         <Navbar />
         <Routes>
           <Route

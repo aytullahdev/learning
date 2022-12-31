@@ -7,7 +7,7 @@ const CoursesCard = (props) => {
   const { user } = useContext(ThemeContext);
   return (
     <div>
-      <div className="bg-[white]  relative h-[330px] rounded shadow-sm border-[gray] overflow-hidden  hover:border-five border">
+      <div className="bg-[white]  relative h-[350px] lg:h-[370px] rounded shadow-sm border-[gray] overflow-hidden  hover:border-five border">
         <img src={props.img} alt="" />
         <div className="px-2">
           <p className="text-lg py-2 font-bold title-des">{props.tittle}</p>

@@ -23,7 +23,7 @@ const SingleCatagory = () => {
       <h1 className="text-center font-bold text-5xl py-8 uppercase">
         {catagory}
       </h1>
-      <div className=" grid gap-5 md:gap-10  md:grid-cols-3 grid-cols-2 lg:grid-cols-3 lg:w-3/4 mx-auto">
+      <div className=" grid gap-5 md:gap-10  md:grid-cols-2 grid-cols-1 lg:grid-cols-3 lg:w-3/4 mx-auto">
         {/* Cards */}
         {courses &&
           courses.map((e) => {

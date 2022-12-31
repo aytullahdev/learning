@@ -36,6 +36,7 @@ const EnrolCourses = () => {
             const date = new Date(e.createdAt).toDateString();
             return (
               <SingleEnrollCourse
+                
                 key={e.course._id}
                 tittle={e.course.tittle}
                 img={e.course.img}

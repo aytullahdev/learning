@@ -26,13 +26,26 @@ const ReviewSlider = () => {
         <h1 className="text-5xl font-bold text-center py-8">
           শিক্ষার্থীরা যা বলছে
         </h1>
+        <div className="banner-slide px-2 lg:px-10">
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, Grid]}
-          spaceBetween={0}
-          slidesPerView={3}
+          spaceBetween={20}
+          slidesPerView={1}
           allowTouchMove={false}
           navigation={{ clickable: true }}
+          breakpoints={{
+            // when window width is >= 640px
+            300: {
+
+              slidesPerView: 1,
+            },
+            // when window width is >= 768px
+            768: {
+              
+              slidesPerView: 3,
+            },
+          }}
         >
           {reviews &&
             reviews.map((e) => {
@@ -41,6 +54,7 @@ const ReviewSlider = () => {
               </SwiperSlide>
             })}
         </Swiper>
+        </div>
       </div>
     </>
   );

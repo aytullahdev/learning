@@ -8,7 +8,7 @@ const Catagories = () => {
       <h1 className="text-center font-bold text-3xl py-10">
         নিজের শেখা নিজেই গুছিয়ে নেয়ার যাত্রা শুরু হোক
       </h1>
-      <div className="grid grid-cols-1 gap-3 px-5 sm:grid-cols-2 md:gap-10">
+      <div className="grid grid-cols-1 gap-3 px-5 md:grid-cols-2 md:gap-10">
         <Link to="/catagories/development">
           <div className="flex items-center border-0 rounded-lg p-7 bg-one">
             <div>
@@ -19,7 +19,7 @@ const Catagories = () => {
               />
             </div>
             <div className="flex-1">
-              <h1 className="mx-5 font-extrabold tracking-wide text-3xl">Development</h1>
+              <h1 className="mx-5 font-extrabold tracking-wide text-sm lg:text-3xl">Development</h1>
             </div>
             <div className="items-end">
               <svg
@@ -49,7 +49,7 @@ const Catagories = () => {
               />
             </div>
             <div className="flex-1">
-              <h1 className="mx-5 font-extrabold tracking-wide text-3xl">Design</h1>
+              <h1 className="mx-5 font-extrabold tracking-wide text-sm lg:text-3xl">Design</h1>
             </div>
             <div className="items-end">
               <svg
@@ -79,7 +79,7 @@ const Catagories = () => {
               />
             </div>
             <div className="flex-1">
-              <h1 className="mx-5 font-extrabold tracking-wide text-3xl">Programming</h1>
+              <h1 className="mx-5 font-extrabold tracking-wide text-sm lg:text-3xl">Programming</h1>
             </div>
             <div className="items-end">
               <svg
@@ -109,7 +109,7 @@ const Catagories = () => {
               />
             </div>
             <div className="flex-1">
-              <h1 className="mx-5 font-extrabold tracking-wide text-3xl">IT & Software</h1>
+              <h1 className="mx-5 font-extrabold tracking-wide text-sm lg:text-3xl">IT & Software</h1>
             </div>
             <div className="items-end">
               <svg

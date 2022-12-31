@@ -15,7 +15,7 @@ const ReviewsCard = (props) => {
   const { user } = useContext(ThemeContext);
   return (
       <div>
-        <div className="relative rounded w-[325px] h-[225px] shadow-sm border-[gray] overflow-hidden  hover:border-five border">
+        <div className="relative rounded w-[270px] lg:w-[325px] h-[225px] shadow-sm border-[gray] overflow-hidden  hover:border-five border">
           <div className="flex mx-2 my-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
