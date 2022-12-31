@@ -194,12 +194,14 @@ const enrolCourse = asyncHandler(async (req, res) => {
     throw new Error("Please provide all data!");
   }
   const findData = await Enrol.findOne({ user: userID, course: courseID });
+  const courseData = await Course.findOne({_id: courseID})
+  const total_enroll = courseData.total_enroll+1;
   if (findData) {
     res.status(400);
-    throw new Error("Alrady enrolled!");
+    throw new Error("Already enrolled!");
   }
   const result = await Enrol.create({ user: userID, course: courseID });
-
+  const updateCourseData = await Course.findByIdAndUpdate({_id: courseID},{total_enroll});
   res.json(result);
 });
 const getEnrolCourse = asyncHandler(async (req, res) => {
