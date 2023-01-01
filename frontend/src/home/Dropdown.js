@@ -55,7 +55,7 @@ const Dropdown = () => {
                 </Link>
               )}
             </Menu.Item>
-            <Menu.Item>
+            {/* <Menu.Item>
               {({ active }) => (
                 <a
                   href="#"
@@ -67,7 +67,7 @@ const Dropdown = () => {
                   Change Password
                 </a>
               )}
-            </Menu.Item>
+            </Menu.Item> */}
             <div>
               <Menu.Item>
                 {({ active }) => (

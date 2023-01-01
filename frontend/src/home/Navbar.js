@@ -6,7 +6,7 @@ import Dropdown from "./Dropdown";
 const Navbar = () => {
   const { user, setUser } = useContext(ThemeContext);
   return (
-    <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-10 mb-2">
       <div>
         <p className="text-4xl text-center lg:text-left font-bold">
           Lear<span className=" text-five">ner</span>
