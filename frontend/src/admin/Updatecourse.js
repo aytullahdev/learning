@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { ThemeContext } from "../App";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const Updatecourse = () => {
     const {id} = useParams();
+    const navgate = useNavigate();
     const [courseData, setCourseData] = useState({
         tittle: "",
         price: 0,
@@ -34,7 +35,7 @@ const Updatecourse = () => {
         axios.get(`http://localhost:5556/api/users/course/${id}`).then((res)=>{
             if(res.data && res.data._id){
                 setCourseData(res.data);
-                console.log(res.data)
+                
             }
         })
       },[])
@@ -63,18 +64,6 @@ const Updatecourse = () => {
           .then((res) => {
             if (res.data && res.data?._id) {
               toast.success("Course is upadted");
-              setCourseData({
-                tittle: "",
-                price: 0,
-                img: "",
-                description: "",
-                duration: "",
-                catagory: "",
-                instructor_name: "",
-                instructor_profession: "",
-                instructor_qual: "",
-                instructor_img: "",
-              });
             } else {
               toast.error("Server error please try again");
             }
