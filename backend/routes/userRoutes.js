@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews, enrolCourse, getEnrolCourse, getReview, updateReview, getCatagory, updateCourse, userUpdate} = require('../controler/userControler');
+const { createUser , loginUser , getMe, uploadContent, addReview, addCourse, getCourses,getCourse, getReviews, enrolCourse, getEnrolCourse, getReview, updateReview, getCatagory, updateCourse, userUpdate,deleteReview} = require('../controler/userControler');
 const protect = require('../middleware/authMiddleware')
 
   
@@ -21,4 +21,5 @@ router.post('/getreview',protect,getReview)
 router.post('/updatereview',protect,updateReview)
 router.post('/updatecourse',protect,updateCourse);
 router.post('/userupdate',protect,userUpdate);
+router.post('/reviewdelete',protect,deleteReview)
 module.exports = router;

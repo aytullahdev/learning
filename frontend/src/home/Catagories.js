@@ -99,7 +99,7 @@ const Catagories = () => {
             </div>
           </div>
         </Link>
-        <Link to="/catagories/software">
+        <Link to="/catagories/it_software">
           <div className="flex items-center border-0 rounded-lg p-7 bg-four">
             <div>
               <img

@@ -26,7 +26,7 @@ const courseSchema= mongoose.Schema({
    catagory:{
       type: String,
       required: [true, 'Please add a Catagory'],
-      enum: ['development','design', 'programming' , 'it & software']
+      enum: ['development','design', 'programming' , 'it_software']
 
    },
    instructor_name:{
