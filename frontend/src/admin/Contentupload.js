@@ -150,7 +150,7 @@ const Contentupload = () => {
             <option  value="development">Development</option>
             <option defaultChecked value="design">Design</option>
             <option value="programming">Programming</option>
-            <option value="it & software">It & Software</option>
+            <option value="it_software">It & Software</option>
           </select>
         </div>
         <div className="grid grid-cols-2 gap-10 ">

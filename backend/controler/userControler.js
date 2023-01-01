@@ -246,6 +246,21 @@ const updateCourse = asyncHandler(async (req, res) => {
   });
   res.json(resData);
 });
+const deleteReview = asyncHandler( async (req,res)=>{
+    const {courseID} = req.body;
+   const result = await  Review.findOneAndDelete({course:courseID,user:req.user._id});
+   if(!result){
+      res.status(400);
+      throw new Error("Can't Deleted");
+   }
+   const enrollResult = await Enrol.findOneAndUpdate({course:courseID,user:req.user._id},{isReviewed:false})
+   if(!enrollResult){
+    res.status(400);
+    throw new Error("Can't Deleted");
+   }
+   res.json(enrollResult);
+
+ })
 const userUpdate = asyncHandler( async (req,res)=>{
     const result = await User.findOneAndUpdate({_id:req.user._id},req.body.userdata)
     if(!result){
@@ -271,5 +286,6 @@ module.exports = {
   updateReview,
   getCatagory,
   updateCourse,
-  userUpdate
+  userUpdate,
+  deleteReview
 };
