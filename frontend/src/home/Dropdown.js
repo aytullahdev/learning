@@ -13,7 +13,7 @@ const Dropdown = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
         <Menu.Button className="flex items-center">
-        <img className="w-8 mx-2" src={user.img || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"} alt="" />
+        <img className="w-8 mx-2 rounded-full" src={user.img || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"} alt="" />
           {user.name}
         <ChevronDownIcon className="-mr-1 ml-1 h-5 w-5" aria-hidden="true" />
         </Menu.Button>

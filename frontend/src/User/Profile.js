@@ -55,7 +55,7 @@ const Profile = () => {
                 <div className=''>
                      <div className='flex items-center justify-center'>
                         
-                        <img src={user.img} alt="" />
+                        <img className='rounded-full w-50' src={user.img} alt="" />
                      </div>
                 </div>
                 <div className=''>

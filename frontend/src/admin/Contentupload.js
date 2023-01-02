@@ -110,7 +110,7 @@ const Contentupload = () => {
             onChange={onCourseDataChange}
             type="text"
             className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-            placeholder="Enter the course amount"
+            placeholder="Enter the course image link"
             value={img}
             name="img"
           />
@@ -121,7 +121,7 @@ const Contentupload = () => {
             onChange={onCourseDataChange}
             type="text"
             className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-            placeholder="Enter the course amount"
+            placeholder="Enter the course description"
             value={description}
             name="description"
           />
@@ -132,18 +132,18 @@ const Contentupload = () => {
             onChange={onCourseDataChange}
             type="text"
             className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-            placeholder="Enter the course amount"
+            placeholder="Enter the course duration"
             value={duration}
             name="duration"
           />
         </div>
         <div>
-          <span className="text-xl  font-semibold">Catagory:</span>
+          <span className="text-xl  font-semibold">Category:</span>
           <select
             onChange={onCourseDataChange}
             type="text"
             className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-            placeholder="Enter the course amount"
+            placeholder="Enter the course category"
             value={catagory}
             name="catagory"
           >
@@ -161,7 +161,7 @@ const Contentupload = () => {
                 onChange={onCourseDataChange}
                 type="text"
                 className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-                placeholder="Enter the course amount"
+                placeholder="Enter the course instructor name"
                 value={instructor_name}
                 name="instructor_name"
               />
@@ -176,7 +176,7 @@ const Contentupload = () => {
                 onChange={onCourseDataChange}
                 type="text"
                 className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-                placeholder="Enter the course amount"
+                placeholder="Enter the course instructor profession"
                 value={instructor_profession}
                 name="instructor_profession"
               />
@@ -191,7 +191,7 @@ const Contentupload = () => {
                 onChange={onCourseDataChange}
                 type="text"
                 className="p-4 bg-[#dfdfdf94] shadow-sm rounded w-full my-4"
-                placeholder="Enter the course amount"
+                placeholder="Enter the course instructor qualification"
                 value={instructor_qual}
                 name="instructor_qual"
               />

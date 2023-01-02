@@ -20,7 +20,7 @@ const CoursesCard = (props) => {
           {user && user.isAdmin && (
             <div>
               <Link
-                to={`update/${props.id}`}
+                to={`/update/${props.id}`}
                 className="absolute inset-x-0 bottom-0 w-60 shadow-lg text-[white] text-xl text-center my-2 mx-auto block py-2 bg-five  hover:bg-[green] rounded"
               >
                 Update
