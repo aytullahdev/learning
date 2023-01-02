@@ -22,6 +22,8 @@ import axios from "axios";
 import SingleCatagory from "./home/SingleCatagory";
 import Updatecourse from "./admin/Updatecourse";
 import EnrolCourses from "./User/EnrolCourses";
+import About from "./home/About";
+import ContactUs from "./home/ContactUs";
 
 axios.interceptors.response.use(
   (res) => res,
@@ -50,12 +52,14 @@ function App() {
               <>
                 <Banner lim={5} />
                 <Catagories />
-                <Crashcourses lim={6}/>
+                <Crashcourses lim={6} />
                 <Statussection />
                 <ReviewSlider />
+                <ContactUs />
               </>
             }
           />
+          <Route path="/about" element={<About />} />
           <Route
             path="/profile"
             element={
@@ -64,7 +68,7 @@ function App() {
               </SecureUser>
             }
           />
-          <Route path="/enrollcourses" element={<EnrolCourses/>}/>
+          <Route path="/enrollcourses" element={<EnrolCourses />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route
@@ -77,7 +81,7 @@ function App() {
           />
           <Route path="/course/:courseID" element={<CourseDetails />} />
           <Route path="/catagories/:catagory" element={<SingleCatagory />} />
-          <Route path="/update/:id" element={<Updatecourse/>}/>
+          <Route path="/update/:id" element={<Updatecourse />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ToastContainer />

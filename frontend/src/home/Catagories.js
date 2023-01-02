@@ -6,7 +6,7 @@ const Catagories = () => {
   return (
     <div className="py-10">
       <h1 className="text-center font-bold text-3xl py-10">
-        নিজের শেখা নিজেই গুছিয়ে নেয়ার যাত্রা শুরু হোক
+        Catagories You Looking For
       </h1>
       <div className="grid grid-cols-1 gap-3 px-5 md:grid-cols-2 md:gap-10">
         <Link to="/catagories/development">

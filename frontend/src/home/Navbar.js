@@ -6,12 +6,15 @@ import Dropdown from "./Dropdown";
 const Navbar = () => {
   const { user, setUser } = useContext(ThemeContext);
   return (
-    <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <div>
-        <p className="text-4xl text-center lg:text-left font-bold">
-          Lear<span className=" text-five">ner</span>
-        </p>
-      </div>
+    <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-10 mb-2">
+      <Link to="/">
+        <div>
+          <p className="text-4xl text-center lg:text-left font-bold">
+            Lear<span className=" text-five">ner</span>
+          </p>
+        </div>
+      </Link>
+
       <div className="flex  space-x-10 flex-row justify-end items-center text-sm lg:text-xl">
         <div>
           <Link to="/">Home</Link>
@@ -19,16 +22,18 @@ const Navbar = () => {
         <div>
           <Link to="/catagories/all">Courses</Link>
         </div>
-        
+        <div>
+          <Link to="/About">About Us
+            
+          </Link>
+        </div>
+
         {user && user.isAdmin && (
           <div>
             <Link to="/upload">Upload</Link>
           </div>
         )}
-        {
-          user && 
-          <Dropdown/>
-        }
+        {user && <Dropdown />}
         {!user && (
           <div>
             <Link to="/login">

@@ -69,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Cradential dosen't match!");
+    throw new Error("Credential doesn't match!");
   }
 });
 const addReview = asyncHandler(async (req, res) => {
@@ -160,7 +160,7 @@ const getCourses = asyncHandler(async (req, res) => {
 });
 const getCourse = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  if(!mongoose.isValidObjectId(id)){
+  if (!mongoose.isValidObjectId(id)) {
     res.status(400);
     throw new Error("Object is isn't valid");
   }
@@ -194,14 +194,17 @@ const enrolCourse = asyncHandler(async (req, res) => {
     throw new Error("Please provide all data!");
   }
   const findData = await Enrol.findOne({ user: userID, course: courseID });
-  const courseData = await Course.findOne({_id: courseID})
-  const total_enroll = courseData.total_enroll+1;
+  const courseData = await Course.findOne({ _id: courseID });
+  const total_enroll = courseData.total_enroll + 1;
   if (findData) {
     res.status(400);
     throw new Error("Already enrolled!");
   }
   const result = await Enrol.create({ user: userID, course: courseID });
-  const updateCourseData = await Course.findByIdAndUpdate({_id: courseID},{total_enroll});
+  const updateCourseData = await Course.findByIdAndUpdate(
+    { _id: courseID },
+    { total_enroll }
+  );
   res.json(result);
 });
 const getEnrolCourse = asyncHandler(async (req, res) => {
@@ -232,44 +235,62 @@ const updateCourse = asyncHandler(async (req, res) => {
     instructor_profession,
     instructor_qual,
   } = req.body;
-  const resData = await Course.findOneAndUpdate({ _id: req.body._id },{
-    tittle,
-    price,
-    img,
-    description,
-    duration,
-    catagory,
-    instructor_img,
-    instructor_name,
-    instructor_profession,
-    instructor_qual,
-  });
+  const resData = await Course.findOneAndUpdate(
+    { _id: req.body._id },
+    {
+      tittle,
+      price,
+      img,
+      description,
+      duration,
+      catagory,
+      instructor_img,
+      instructor_name,
+      instructor_profession,
+      instructor_qual,
+    }
+  );
   res.json(resData);
 });
-const deleteReview = asyncHandler( async (req,res)=>{
-    const {courseID} = req.body;
-   const result = await  Review.findOneAndDelete({course:courseID,user:req.user._id});
-   if(!result){
-      res.status(400);
-      throw new Error("Can't Deleted");
-   }
-   const enrollResult = await Enrol.findOneAndUpdate({course:courseID,user:req.user._id},{isReviewed:false})
-   if(!enrollResult){
+const deleteReview = asyncHandler(async (req, res) => {
+  const { courseID } = req.body;
+  const result = await Review.findOneAndDelete({
+    course: courseID,
+    user: req.user._id,
+  });
+  if (!result) {
     res.status(400);
     throw new Error("Can't Deleted");
-   }
-   res.json(enrollResult);
-
- })
-const userUpdate = asyncHandler( async (req,res)=>{
-    const result = await User.findOneAndUpdate({_id:req.user._id},req.body.userdata)
-    if(!result){
-      res.status(400);
-      throw new Error("User isn't updated!");
-    }
-   // console.log(req.body.userdata);
-    res.json(result);
-})
+  }
+  const enrollResult = await Enrol.findOneAndUpdate(
+    { course: courseID, user: req.user._id },
+    { isReviewed: false }
+  );
+  if (!enrollResult) {
+    res.status(400);
+    throw new Error("Can't Deleted");
+  }
+  res.json(enrollResult);
+});
+const userUpdate = asyncHandler(async (req, res) => {
+  const result = await User.findOneAndUpdate(
+    { _id: req.user._id },
+    req.body.userdata
+  );
+  if (!result) {
+    res.status(400);
+    throw new Error("User isn't updated!");
+  }
+  // console.log(req.body.userdata);
+  res.json(result);
+});
+const getStatus = asyncHandler(async (req, res) => {
+  const users = await (await User.find({})).length;
+  const reviews = await (await Review.find({})).length;
+  const enrolls = await (await Enrol.find({})).length;
+  const courses = await (await Course.find({})).length;
+  res.json({ users, reviews, enrolls, courses });
+});
 module.exports = {
   createUser,
   loginUser,
@@ -287,5 +308,6 @@ module.exports = {
   getCatagory,
   updateCourse,
   userUpdate,
-  deleteReview
+  deleteReview,
+  getStatus,
 };

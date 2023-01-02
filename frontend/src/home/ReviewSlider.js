@@ -24,7 +24,7 @@ const ReviewSlider = () => {
     <>
       <div className=" mx-auto my-10">
         <h1 className="text-5xl font-bold text-center py-8">
-          শিক্ষার্থীরা যা বলছে
+          Student Reviews
         </h1>
         <div className="banner-slide px-2 lg:px-10">
         <Swiper

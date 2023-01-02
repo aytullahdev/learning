@@ -24,3 +24,8 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.socialIcon:hover{
+  position:relative;
+  bottom: 5px;
+}
