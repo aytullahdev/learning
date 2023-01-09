@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", require("./routes/userRoutes"));
 // Error Handle
 app.get("/", (req, res) => {
-  res.send("Server is running.");
+  res.send("Welcome to learner");
 });
 app.use(errorHandler);
 
