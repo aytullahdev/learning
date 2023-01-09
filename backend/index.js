@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const app = express();
 const cors = require("cors");
 const color = require("colors");
-const PORT = process.env.PROT || 5556;
+const PORT = 5556;
 const errorHandler = require("./middleware/errorHandle");
 const connectDB = require("./connection/databaseConnection");
 // Extensions
