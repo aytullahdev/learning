@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const app = express();
 const cors = require("cors");
 const color = require("colors");
-const PORT = 5556;
+const PORT = 9002;
 const errorHandler = require("./middleware/errorHandle");
 const connectDB = require("./connection/databaseConnection");
 // Extensions
@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-
-app.use("/api/users", require("./routes/userRoutes"));
-// Error Handle
 app.get("/", (req, res) => {
   res.send("Welcome to learner");
 });
+app.use("/api/users", require("./routes/userRoutes"));
+// Error Handle
+
 app.use(errorHandler);
 
 app.listen(PORT, async () => {
