@@ -14,7 +14,7 @@ import CoursesCard from "../card/CoursesCard";
 const Banner = (props) => {
   const [courses, setCourses] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5556/api/users/getcourses")
+    fetch(`${process.env.REACT_APP_API_URL}/api/users/getcourses`)
       .then((response) => response.json())
       .then((data) => {
         if (props.lim) {
@@ -54,12 +54,10 @@ const Banner = (props) => {
             breakpoints={{
               // when window width is >= 640px
               300: {
-
                 slidesPerView: 1,
               },
               // when window width is >= 768px
               768: {
-                
                 slidesPerView: 3,
               },
             }}

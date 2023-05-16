@@ -2,26 +2,23 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import CoursesCard from "../card/CoursesCard";
 
-
 const SingleCatagory = () => {
   let { catagory } = useParams();
   const [courses, setCourses] = useState(null);
-  const [cat, setCat] =  useState(catagory)
-  let link = `http://localhost:5556/api/users/catagories/${catagory}`;
-  if(catagory=='all'){
-    catagory = "Available Courses"
-    link = `http://localhost:5556/api/users/getcourses`
+  const [cat, setCat] = useState(catagory);
+  let link = `${process.env.REACT_APP_API_URL}/api/users/catagories/${catagory}`;
+  if (catagory == "all") {
+    catagory = "Available Courses";
+    link = `${process.env.REACT_APP_API_URL}/api/users/getcourses`;
   }
   useEffect(() => {
-    if(catagory){
-    fetch(link)
-      .then((response) => response.json())
-      .then((data) => {
-        setCourses(data);
-      });
-      return ()=>{
-
-      }
+    if (catagory) {
+      fetch(link)
+        .then((response) => response.json())
+        .then((data) => {
+          setCourses(data);
+        });
+      return () => {};
     }
   }, []);
   return (

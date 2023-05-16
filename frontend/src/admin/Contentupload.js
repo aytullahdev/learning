@@ -30,48 +30,57 @@ const Contentupload = () => {
   const { user } = useContext(ThemeContext);
 
   const handleSubmit = () => {
-    if( (!tittle ||
-        !price ||
-        !img ||
-        !description ||
-        !duration ||
-        !catagory ||
-        !instructor_img ||
-        !instructor_name ||
-        !instructor_profession ||
-        !instructor_qual) || price<1000 ){
-            toast.error("Please enter valid data!");
-            return;
-        }
+    if (
+      !tittle ||
+      !price ||
+      !img ||
+      !description ||
+      !duration ||
+      !catagory ||
+      !instructor_img ||
+      !instructor_name ||
+      !instructor_profession ||
+      !instructor_qual ||
+      price < 1000
+    ) {
+      toast.error("Please enter valid data!");
+      return;
+    }
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     };
     toast.promise(
-    axios
-      .post("http://localhost:5556/api/users/upload", courseData, config)
-      .then((res) => {
-        if (res.data && res.data?._id) {
-          toast.success("Course is inserted");
-          setCourseData({
-            tittle: "",
-            price: 0,
-            img: "",
-            description: "",
-            duration: "",
-            catagory: "",
-            instructor_name: "",
-            instructor_profession: "",
-            instructor_qual: "",
-            instructor_img: "",
-          });
-        } else {
-          toast.error("Server error please try again");
-        }
-      }),{
-        pending:"Please wait"
-      });
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/api/users/upload`,
+          courseData,
+          config
+        )
+        .then((res) => {
+          if (res.data && res.data?._id) {
+            toast.success("Course is inserted");
+            setCourseData({
+              tittle: "",
+              price: 0,
+              img: "",
+              description: "",
+              duration: "",
+              catagory: "",
+              instructor_name: "",
+              instructor_profession: "",
+              instructor_qual: "",
+              instructor_img: "",
+            });
+          } else {
+            toast.error("Server error please try again");
+          }
+        }),
+      {
+        pending: "Please wait",
+      }
+    );
   };
   const onCourseDataChange = (e) => {
     setCourseData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -147,8 +156,10 @@ const Contentupload = () => {
             value={catagory}
             name="catagory"
           >
-            <option  value="development">Development</option>
-            <option defaultChecked value="design">Design</option>
+            <option value="development">Development</option>
+            <option defaultChecked value="design">
+              Design
+            </option>
             <option value="programming">Programming</option>
             <option value="it_software">It & Software</option>
           </select>

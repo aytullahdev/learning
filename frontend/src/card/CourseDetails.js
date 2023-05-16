@@ -13,7 +13,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width:"50%"
+    width: "50%",
   },
 };
 Modal.setAppElement("body");
@@ -31,23 +31,25 @@ const CourseDetails = () => {
         Authorization: `Bearer ${user.token}`,
       },
     };
-    toast.promise(axios
-      .post(
-        "http://localhost:5556/api/users/enroll",
-        { userID, courseID },
-        config
-      )
-      .then((res) => {
-        if (res.data && res.data?._id) {
-          
-          closeModal()
-        } else if (res.data && res.data?.message) {
-          closeModal()
-        } 
-      }),{
+    toast.promise(
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/api/users/enroll`,
+          { userID, courseID },
+          config
+        )
+        .then((res) => {
+          if (res.data && res.data?._id) {
+            closeModal();
+          } else if (res.data && res.data?.message) {
+            closeModal();
+          }
+        }),
+      {
         pending: "Enrolling Courses",
         success: "Course Enroll Sucessfully",
-      })
+      }
+    );
   };
   function openModal() {
     setIsOpen(true);
@@ -60,7 +62,7 @@ const CourseDetails = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5556/api/users/course/${courseID}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/users/course/${courseID}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.message) {
@@ -117,17 +119,33 @@ const CourseDetails = () => {
             <h1 className="pt-10 pb-5 text-2xl font-bold">
               {courseData.tittle}
             </h1>
-            <p className="pb-10">
-              {courseData.description}
-            </p>
+            <p className="pb-10">{courseData.description}</p>
             <div className="border-2 border-[black] py-5">
-              <h1 className="text-2xl font-bold py-2 px-5">Why You Enroll This Course</h1>
+              <h1 className="text-2xl font-bold py-2 px-5">
+                Why You Enroll This Course
+              </h1>
               <ul className="list-disc p-5">
-                <li>To gain new skills or knowledge: This course can help you learn new skills or knowledge in a specific area, which can be beneficial for personal or professional development.</li>
-                <li>To advance your career: Taking this course can help you advance your career by increasing your expertise in a certain field or by helping you qualify for new job opportunities.</li>
-                <li>To meet new people: Courses often bring together a diverse group of people who have a common interest. This can be a great opportunity to meet new people and expand your network.</li>
+                <li>
+                  To gain new skills or knowledge: This course can help you
+                  learn new skills or knowledge in a specific area, which can be
+                  beneficial for personal or professional development.
+                </li>
+                <li>
+                  To advance your career: Taking this course can help you
+                  advance your career by increasing your expertise in a certain
+                  field or by helping you qualify for new job opportunities.
+                </li>
+                <li>
+                  To meet new people: Courses often bring together a diverse
+                  group of people who have a common interest. This can be a
+                  great opportunity to meet new people and expand your network.
+                </li>
               </ul>
-              <h5 className="p-2">Overall, there are many reasons to consider taking this course, and the specific reasons will depend on your individual goals and interests.</h5>
+              <h5 className="p-2">
+                Overall, there are many reasons to consider taking this course,
+                and the specific reasons will depend on your individual goals
+                and interests.
+              </h5>
             </div>
             <h1 className="text-2xl font-bold py-5">Course Instructor</h1>
             <div className="flex shadow rounded p-5 ">
@@ -138,7 +156,9 @@ const CourseDetails = () => {
                 />
               </div>
               <div className="w-2/3 ">
-                <p className="hover:text-five  pointer">{courseData.instructor_name}</p>
+                <p className="hover:text-five  pointer">
+                  {courseData.instructor_name}
+                </p>
                 <p>{courseData.instructor_profession}</p>
                 <p>{courseData.instructor_qual}</p>
               </div>

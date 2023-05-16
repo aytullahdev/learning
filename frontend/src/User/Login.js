@@ -1,22 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useUserstate from "../hooks/useUserstate";
 import { ThemeContext } from "../App";
 const Login = () => {
-  const {user,setUser} = useContext(ThemeContext);
+  const { user, setUser } = useContext(ThemeContext);
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-  useEffect(()=>{
-    if(user){
-        navigate('/') 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
     }
-    
-    
-  },[user])
+  }, [user]);
   const { email, password } = userData;
   const setData = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -26,28 +24,30 @@ const Login = () => {
       toast.error("Please provide all data!");
       return;
     }
-    toast.promise( fetch("http://localhost:5556/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-       // console.log(data);
-       if(data.message){
-         toast.warning(data.message);
-       }
-       if(data._id){
-         toast.success("Login Successful");
-         //setUser(data);
-          localStorage.setItem('user',JSON.stringify(data));
-          setUser(data)
-         
-       }
+    toast.promise(
+      fetch(`${process.env.REACT_APP_API_URL}/api/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
       })
-      .catch((err) => console.log(err)),{
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.message) {
+            toast.warning(data.message);
+          }
+          if (data._id) {
+            toast.success("Login Successful");
+            //setUser(data);
+            localStorage.setItem("user", JSON.stringify(data));
+            setUser(data);
+          }
+        })
+        .catch((err) => console.log(err)),
+      {
         pending: "Login process..",
-      });
+      }
+    );
   };
   return (
     <div className="mx-auto  py-10 bg-white w-[250px] ">
@@ -83,7 +83,9 @@ const Login = () => {
         </button>
       </div>
       <div>
-         <p className=" text-[#074c74] text-md hover:underline"><Link to="/register">Create a account?</Link></p>
+        <p className=" text-[#074c74] text-md hover:underline">
+          <Link to="/register">Create a account?</Link>
+        </p>
       </div>
     </div>
   );

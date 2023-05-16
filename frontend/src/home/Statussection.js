@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const Statussection = () => {
   const [status, setStatus] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5556/api/users/getstatus")
+    fetch(`${process.env.REACT_APP_API_URL}/api/users/getstatus`)
       .then((response) => response.json())
       .then((data) => {
         setStatus(data);
@@ -26,7 +26,7 @@ const Statussection = () => {
           <h1 className="text-3xl font-semibold">{status?.reviews}</h1>
           <span className="text-base">Total Review</span>
         </div>
-        
+
         <div className="bg-four text-black rounded flex justify-center items-center flex-col p-5  ">
           <h1 className="text-3xl font-semibold">{status?.courses}</h1>
           <span className="text-base">Total Course</span>

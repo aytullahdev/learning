@@ -54,7 +54,7 @@ const SingleEnrollCourse = (props) => {
     };
     axios
       .post(
-        "http://localhost:5556/api/users/addreview",
+        `${process.env.REACT_APP_API_URL}/api/users/addreview`,
         {
           rating,
           review: text,
@@ -65,11 +65,10 @@ const SingleEnrollCourse = (props) => {
       )
       .then((res) => {
         if (res.data && res.data?._id) {
-          navigate('/')
+          navigate("/");
           toast.success("Review Posted");
           closeModal();
           setIsReviewed(false);
-         
         }
       });
   };
@@ -86,7 +85,7 @@ const SingleEnrollCourse = (props) => {
     toast.promise(
       axios
         .post(
-          "http://localhost:5556/api/users/updatereview",
+          `${process.env.REACT_APP_API_URL}/api/users/updatereview`,
           {
             rating,
             review: text,
@@ -99,7 +98,7 @@ const SingleEnrollCourse = (props) => {
           if (res.data && res.data?._id) {
             toast.success("Review Updated");
             closeModal();
-            navigate('/')
+            navigate("/");
           }
         }),
       {
@@ -107,7 +106,7 @@ const SingleEnrollCourse = (props) => {
       }
     );
   };
-  const deleteReview = ()=>{
+  const deleteReview = () => {
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -116,7 +115,7 @@ const SingleEnrollCourse = (props) => {
     //console.log(props.id,config)
     axios
       .post(
-        "http://localhost:5556/api/users/reviewdelete",
+        `${process.env.REACT_APP_API_URL}/api/users/reviewdelete`,
         {
           courseID: props.id,
         },
@@ -128,11 +127,10 @@ const SingleEnrollCourse = (props) => {
           setRating(1);
           setText("");
           closeModal();
-          navigate('/')
-         
+          navigate("/");
         }
       });
-  }
+  };
   const getReview = () => {
     const config = {
       headers: {
@@ -142,7 +140,7 @@ const SingleEnrollCourse = (props) => {
     //console.log(props.id,config)
     axios
       .post(
-        "http://localhost:5556/api/users/getreview",
+        `${process.env.REACT_APP_API_URL}/api/users/getreview`,
         {
           courseid: props.id,
         },
@@ -152,11 +150,10 @@ const SingleEnrollCourse = (props) => {
         if (res.data && res.data._id) {
           setText(res.data.text);
           setRating(res.data.rating);
-         
         }
       });
   };
-  
+
   return (
     <div>
       {user && (
