@@ -13,7 +13,7 @@ const Login = () => {
     if (user) {
       navigate("/");
     }
-  }, [user, user.token]);
+  }, [user]);
   const { email, password } = userData;
   const setData = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
