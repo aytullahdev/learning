@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import useUserstate from "../hooks/useUserstate";
 import { ThemeContext } from "../App";
 const Login = () => {
   const { user, setUser } = useContext(ThemeContext);
@@ -14,7 +13,7 @@ const Login = () => {
     if (user) {
       navigate("/");
     }
-  }, [user]);
+  }, [user, user.token]);
   const { email, password } = userData;
   const setData = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
