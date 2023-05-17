@@ -1,6 +1,9 @@
 import React from "react";
-
+import { toast } from "react-toastify";
 const ContactUs = () => {
+  const handleSubmit = () => {
+    toast.success("Thank you for message.");
+  };
   return (
     <div className="my-5">
       <div className="grid grid-cols-2">
@@ -15,7 +18,7 @@ const ContactUs = () => {
           <div className="flex flex-col space-y-2 p-5">
             <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               className="rounded "
               placeholder="Enter your Email"
             />
@@ -29,7 +32,10 @@ const ContactUs = () => {
             />
           </div>
           <div className="flex flex-row justify-center my-5 rounded">
-            <button className="px-10 py-2 bg-five text-[white] rounded">
+            <button
+              onClick={() => handleSubmit()}
+              className="px-10 py-2 bg-five text-[white] rounded"
+            >
               SEND
             </button>
           </div>
