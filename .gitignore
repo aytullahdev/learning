@@ -13,6 +13,8 @@
 /build
 /build/node_modules
 
+/frontend/build
+/frontend/build/node_modules
 # misc
 .DS_Store
 .env.local

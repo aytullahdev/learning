@@ -285,10 +285,10 @@ const userUpdate = asyncHandler(async (req, res) => {
   res.json(result);
 });
 const getStatus = asyncHandler(async (req, res) => {
-  const users = await (await User.find({})).length;
-  const reviews = await (await Review.find({})).length;
-  const enrolls = await (await Enrol.find({})).length;
-  const courses = await (await Course.find({})).length;
+  const users = (await User.find({})).length;
+  const reviews = (await Review.find({})).length;
+  const enrolls = (await Enrol.find({})).length;
+  const courses = (await Course.find({})).length;
   res.json({ users, reviews, enrolls, courses });
 });
 module.exports = {

@@ -12,7 +12,7 @@ const EnrolCourses = () => {
       },
     };
     axios
-      .get("http://localhost:5556/api/users/getenrollcourse", config)
+      .get(`${process.env.REACT_APP_API_URL}/api/users/getenrollcourse`, config)
       .then((res) => {
         if (res.data) {
           setCourses(res.data);
@@ -26,17 +26,12 @@ const EnrolCourses = () => {
       </h1>
       {courses && courses.length && (
         <div className="grid grid-cols-1 gap-5">
-          
-          {
-            /* Single Course */
-          }
+          {/* Single Course */}
           {courses.map((e) => {
-            
             // const date = e.createdAt.slice(0,10);
             const date = new Date(e.createdAt).toDateString();
             return (
               <SingleEnrollCourse
-                
                 key={e.course._id}
                 tittle={e.course.tittle}
                 img={e.course.img}
