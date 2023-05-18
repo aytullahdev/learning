@@ -9,6 +9,6 @@
     - cd backend
     - npm install
     - node index.js
-# temporary user
+# temporary user -
     # email: test@gmail.com
     # password: asdfasdf
