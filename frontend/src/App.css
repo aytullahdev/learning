@@ -3,11 +3,11 @@
   justify-content: space-around;
 }
 .swiper-button-next {
-  right: 2px;
+  right: 3px;
   left: auto;
 }
 .swiper-button-prev {
-  left: 2px;
+  left: 3px;
   right: auto;
 }
 .review-des{
