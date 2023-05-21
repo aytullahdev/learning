@@ -35,18 +35,24 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="my-10">
-        <div>
+        <div className="flex flex-row gap-5">
           <Link
             to="/upload"
-            className="py-2 px-10 bg-green-500 rounded text-white"
+            className="py-4 px-10 bg-green-500 rounded text-white"
           >
             Upload Course
           </Link>
           <Link
             to="/catagories/all"
-            className="py-2 px-10 bg-green-500 rounded text-white"
+            className="py-4 px-10 bg-orange-500 rounded text-white"
           >
             Manage Courses
+          </Link>
+          <Link
+            to="/profile"
+            className="py-4 px-10 bg-blue-500 rounded text-white"
+          >
+            Profile
           </Link>
         </div>
       </div>

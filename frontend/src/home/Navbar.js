@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../App";
 import Dropdown from "./Dropdown";
+import Search from "./Search";
 
 const Navbar = () => {
   const { user, setUser } = useContext(ThemeContext);
   return (
-    <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-10 mb-2">
+    <div className="py-2 grid lg:flex lg:justify-between grid-cols-1 lg:grid-cols-2 gap-10 mb-2">
       <Link to="/">
         <div>
           <p className="text-4xl text-center lg:text-left font-bold">
@@ -16,6 +17,7 @@ const Navbar = () => {
       </Link>
 
       <div className="flex  space-x-10 flex-row justify-end items-center text-sm lg:text-xl">
+        <Search />
         <div>
           <Link to="/">Home</Link>
         </div>

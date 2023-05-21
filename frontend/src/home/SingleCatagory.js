@@ -3,13 +3,17 @@ import React, { useEffect, useState } from "react";
 import CoursesCard from "../card/CoursesCard";
 
 const SingleCatagory = () => {
-  let { catagory } = useParams();
+  let { catagory, search } = useParams();
   const [courses, setCourses] = useState(null);
   const [cat, setCat] = useState(catagory);
   let link = `${process.env.REACT_APP_API_URL}/api/users/catagories/${catagory}`;
-  if (catagory == "all") {
+  if (catagory === "all") {
     catagory = "Available Courses";
     link = `${process.env.REACT_APP_API_URL}/api/users/getcourses`;
+  }
+  if (catagory === "search") {
+    catagory = "Search result";
+    link = `${process.env.REACT_APP_API_URL}/api/users/getcourses?search=${search}`;
   }
   useEffect(() => {
     if (catagory) {
@@ -20,7 +24,7 @@ const SingleCatagory = () => {
         });
       return () => {};
     }
-  }, []);
+  }, [search, catagory]);
   return (
     <div className="py-5">
       <h1 className="text-center font-bold text-5xl py-8 uppercase">

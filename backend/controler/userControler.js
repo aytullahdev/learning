@@ -155,6 +155,14 @@ const addCourse = asyncHandler(async (req, res) => {
   res.json(newCourse);
 });
 const getCourses = asyncHandler(async (req, res) => {
+  const { search } = req.query;
+  if (search) {
+    const search_courses = await Course.find({
+      tittle: { $regex: `.*${search}.*`, $options: "i" },
+    });
+    res.json(search_courses);
+    return;
+  }
   const courses = await Course.find({});
   res.json(courses);
 });

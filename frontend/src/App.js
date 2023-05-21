@@ -91,6 +91,10 @@ function App() {
           />
           <Route path="/course/:courseID" element={<CourseDetails />} />
           <Route path="/catagories/:catagory" element={<SingleCatagory />} />
+          <Route
+            path="/catagories/:catagory/:search"
+            element={<SingleCatagory />}
+          />
           <Route path="/update/:id" element={<Updatecourse />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
