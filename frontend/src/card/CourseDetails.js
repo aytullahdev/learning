@@ -52,6 +52,10 @@ const CourseDetails = () => {
     );
   };
   function openModal() {
+    if (!user) {
+      toast.error("Please Login");
+      return;
+    }
     setIsOpen(true);
   }
 
@@ -182,7 +186,6 @@ const CourseDetails = () => {
               </div>
               <div className="px-5">
                 <button
-                  disabled={user ? false : true}
                   onClick={openModal}
                   className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
                 >
