@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 const ContactUs = () => {
+  const [msg, setMsg] = useState({
+    message: "",
+    email: "",
+  });
+  const { message, email } = msg;
   const handleSubmit = () => {
+    console.log(msg);
+    if (!message || !email) {
+      toast.error("Please enter Email and Message");
+      return;
+    }
     toast.success("Thank you for message.");
+  };
+  const changeHandle = (e) => {
+    setMsg((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <div className="my-5">
@@ -19,15 +32,19 @@ const ContactUs = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              name="email"
               className="rounded "
+              onChange={changeHandle}
               placeholder="Enter your Email"
             />
           </div>
           <div className="flex flex-col space-y-2 p-5">
-            <label htmlFor="email">Message</label>
+            <label htmlFor="message">Message</label>
             <textarea
               type="text"
+              name="message"
               className="rounded "
+              onChange={changeHandle}
               placeholder="Enter your Message"
             />
           </div>
