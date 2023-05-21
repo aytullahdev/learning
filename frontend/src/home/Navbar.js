@@ -23,14 +23,12 @@ const Navbar = () => {
           <Link to="/catagories/all">Courses</Link>
         </div>
         <div>
-          <Link to="/About">About Us
-            
-          </Link>
+          <Link to="/About">About Us</Link>
         </div>
 
         {user && user.isAdmin && (
           <div>
-            <Link to="/upload">Upload</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </div>
         )}
         {user && <Dropdown />}

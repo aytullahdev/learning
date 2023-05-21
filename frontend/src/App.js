@@ -24,6 +24,7 @@ import EnrolCourses from "./User/EnrolCourses";
 import About from "./home/About";
 import ContactUs from "./home/ContactUs";
 import UpcomeCourses from "./home/UpcomeCourses";
+import Dashboard from "./admin/Dashboard";
 
 axios.interceptors.response.use(
   (res) => res,
@@ -77,6 +78,14 @@ function App() {
             element={
               <SecureUser>
                 <Contentupload />
+              </SecureUser>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <SecureUser>
+                <Dashboard />
               </SecureUser>
             }
           />
