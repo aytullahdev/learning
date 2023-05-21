@@ -1,5 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Course Status",
+    },
+  },
+};
+
+const labels = ["User", "Courses", "Enroll", "Reviews"];
 
 const Dashboard = () => {
   const [status, setStatus] = useState(null);
@@ -10,6 +44,21 @@ const Dashboard = () => {
         setStatus(data);
       });
   }, []);
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Data",
+        data: [
+          status?.users,
+          status?.courses,
+          status?.enrolls,
+          status?.reviews,
+        ],
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-1 my-5 lg:gap-10 ">
@@ -34,13 +83,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="my-10">
-        <div className="flex flex-row gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 my-5">
+        <div className="flex flex-row items-center gap-5">
           <Link
             to="/upload"
             className="py-4 px-10 bg-green-500 rounded text-white"
           >
-            Upload Course
+            Add Course
           </Link>
           <Link
             to="/catagories/all"
@@ -54,6 +103,9 @@ const Dashboard = () => {
           >
             Profile
           </Link>
+        </div>
+        <div>
+          <Bar className="" options={options} data={data} />
         </div>
       </div>
     </div>

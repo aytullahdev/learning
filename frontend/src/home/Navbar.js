@@ -10,13 +10,13 @@ const Navbar = () => {
     <div className="py-2 grid lg:flex lg:justify-between grid-cols-1 lg:grid-cols-2 gap-10 mb-2">
       <Link to="/">
         <div>
-          <p className="text-4xl text-center lg:text-left font-bold">
+          <p className="text-4xl text-center  lg:text-left font-bold">
             Lear<span className=" text-five">ner</span>
           </p>
         </div>
       </Link>
 
-      <div className="flex  space-x-10 flex-row justify-end items-center text-sm lg:text-xl">
+      <div className="flex  space-x-10 flex-col gap-2 lg:gap-0 lg:flex-row justify-end items-center text-sm lg:text-xl">
         <Search />
         <div>
           <Link to="/">Home</Link>
