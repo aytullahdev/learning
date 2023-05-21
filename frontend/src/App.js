@@ -25,6 +25,7 @@ import About from "./home/About";
 import ContactUs from "./home/ContactUs";
 import UpcomeCourses from "./home/UpcomeCourses";
 import Dashboard from "./admin/Dashboard";
+import ChatBot from "./home/ChatBot";
 
 axios.interceptors.response.use(
   (res) => res,
@@ -98,6 +99,7 @@ function App() {
           <Route path="/update/:id" element={<Updatecourse />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <ChatBot></ChatBot>
         <ToastContainer />
       </div>
       <Footer />
