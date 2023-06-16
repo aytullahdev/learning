@@ -251,7 +251,7 @@ const SingleEnrollCourse = (props) => {
           {!isReviewed && (
             <button
               onClick={openModal}
-              className="px-8 lg:px-20 py-2 bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"
+              className="px-8 lg:px-20 py-2 text-sm uppercase bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"
             >
               Add Review
             </button>
@@ -262,7 +262,7 @@ const SingleEnrollCourse = (props) => {
                 openModal();
                 getReview();
               }}
-              className="px-8 lg:px-20 py-2 bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"
+              className="px-8 lg:px-20 py-2 text-sm uppercase bg-[#36b323] hover:bg-[#2e9d1d] text-[white] rounded"
             >
               Update Review
             </button>
