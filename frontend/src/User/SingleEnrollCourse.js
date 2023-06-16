@@ -247,7 +247,7 @@ const SingleEnrollCourse = (props) => {
           <h1 className="text-sm lg:text-3xl font-semibold ">{props.tittle}</h1>
           <p className="py-5 text-xl">Enrolled: {props.createdAt}</p>
         </div>
-        <div>
+        <div className="grid grid-cols-1">
           {!isReviewed && (
             <button
               onClick={openModal}
@@ -267,6 +267,13 @@ const SingleEnrollCourse = (props) => {
               Update Review
             </button>
           )}
+          <a
+            href="https://github.com/aytullahdev/learning"
+            target="_blank"
+            className="px-8 block uppercase text-center text-sm lg:px-20 py-2 my-2 bg-[#de6426] hover:bg-[#145245] text-[white] rounded"
+          >
+            course materials
+          </a>
         </div>
       </div>
     </div>
