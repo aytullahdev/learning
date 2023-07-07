@@ -63,7 +63,7 @@ const Dashboard = () => {
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-1 my-5 lg:gap-10 ">
         {/* Card 2x2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="bg-one text-black  rounded flex justify-center items-center flex-col p-5 ">
             <h1 className="text-3xl font-semibold">{status?.enrolls}</h1>
             <span className="text-base">Total Enroll</span>
@@ -83,8 +83,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 my-5">
-        <div className="flex flex-row items-center gap-5">
+      <div className="grid grid-cols-1  lg:grid-cols-2 my-5">
+        <div className="flex flex-col lg:flex-row items-center gap-5">
           <Link
             to="/upload"
             className="py-4 px-10 bg-green-500 rounded text-white"

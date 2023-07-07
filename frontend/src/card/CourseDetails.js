@@ -119,8 +119,8 @@ const CourseDetails = () => {
       )}
       {courseData && (
         <div className=" grid grid-rows-2 grid-cols-1 lg:grid-cols-2 gap-4 ">
-          <div className="row-span-2">
-            <h1 className="pt-10 pb-5 text-2xl font-bold">
+          <div className="row-span-2 ">
+            <h1 className="pt-10 pb-5  text-2xl font-bold">
               {courseData.tittle}
             </h1>
             <p className="pb-10">{courseData.description}</p>
@@ -168,7 +168,7 @@ const CourseDetails = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row-reverse sticky top-0">
+          <div className="hidden md:d-block md:flex flex-row-reverse ">
             <div className=" shadow rounded w-2/3  ">
               <div className="">
                 <img className="mx-auto " src={courseData.img} alt="" />
@@ -194,7 +194,33 @@ const CourseDetails = () => {
               </div>
             </div>
           </div>
-          <div class="row-span-2 col-span-2"></div>
+          <div class="block  md:hidden"></div>
+          <div className="flex justify-center ">
+            <div className=" shadow rounded w-2/3  ">
+              <div className="">
+                <img className="mx-auto " src={courseData.img} alt="" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-center text-five py-1 px-5">
+                  {courseData.price}৳
+                </h1>
+                <h1 className="text-xl font-semibold py-1 px-5 uppercase">
+                  =&gt; {courseData.duration}
+                </h1>
+                <h1 className="text-xl font-semibold pb-5 px-5 uppercase ">
+                  =&gt; {courseData.catagory}
+                </h1>
+              </div>
+              <div className="px-5">
+                <button
+                  onClick={openModal}
+                  className="w-full text-[white] text-xl mx-auto block py-2 mb-5 bg-five  hover:bg-[green] rounded"
+                >
+                  Enrollment
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

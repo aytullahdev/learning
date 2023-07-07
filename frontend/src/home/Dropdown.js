@@ -11,12 +11,19 @@ function classNames(...classes) {
 const Dropdown = () => {
   const { user, setUser } = useContext(ThemeContext);
   return (
-    <Menu as="div" className="relative inline-block text-left">
-        <Menu.Button className="flex items-center">
-        <img className="w-8 mx-2 rounded-full" src={user.img || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"} alt="" />
-          {user.name}
+    <Menu as="div" className="relative  inline-block text-left ">
+      <Menu.Button className="flex items-center">
+        <img
+          className="w-8 mx-2 rounded-full"
+          src={
+            user.img ||
+            "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          }
+          alt=""
+        />
+        {user.name}
         <ChevronDownIcon className="-mr-1 ml-1 h-5 w-5" aria-hidden="true" />
-        </Menu.Button>
+      </Menu.Button>
 
       <Transition
         as={Fragment}
@@ -27,7 +34,7 @@ const Dropdown = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[white] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 left-1 lg:left-0  z-10 mt-2 w-56 origin-top-right rounded-md bg-[white] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1 px-2">
             <Menu.Item>
               {({ active }) => (

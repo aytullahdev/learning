@@ -21,10 +21,10 @@ const EnrolCourses = () => {
   }, []);
   return (
     <div>
-      <h1 className="uppercase text-3xl font-semibold pb-2 text-five">
+      <h1 className="uppercase text-xl  my-10 lg:my-0 lg:text-3xl font-semibold pb-2 text-five">
         enrolled <span className=" text-[black]">courses</span>
       </h1>
-      {courses && courses.length && (
+      {courses && courses.length > 0 && (
         <div className="grid grid-cols-1 gap-5">
           {/* Single Course */}
           {courses.map((e) => {
@@ -45,7 +45,7 @@ const EnrolCourses = () => {
         </div>
       )}
       {courses && !courses.length && (
-        <div className="bg-[#e9e4e4cb] py-10 rounded">
+        <div className="bg-[#e9e4e4cb] py-10 my-10 lg:my-0 rounded ">
           <h1 className="text-3xl text-center">No Courses Enrolled</h1>
         </div>
       )}
