@@ -62,28 +62,36 @@ const Navbar = () => {
       <div
         className={`${
           toggleNav ? "left-0" : "-left-full"
-        } bg-white shadow-md transition-all delay-150 duration-300 ease-in-out lg:shadow-none rounded p-5 lg:p-0 lg:bg-white absolute  top-0 space-y-5 lg:space-y-0 z-50 h-full lg:relative lg:h-auto lg:flex  lg:d-block space-x-10 flex-col gap-2 lg:gap-0 lg:flex-row justify-end items-center text-sm lg:text-xl`}
+        } bg-white shadow-md transition-all delay-150 duration-200 ease-in-out lg:shadow-none rounded p-5 lg:p-0 lg:bg-white absolute  top-0 space-y-5 lg:space-y-0 z-50 h-full lg:relative lg:left-auto lg:h-auto lg:flex  lg:d-block space-x-10 flex-col gap-2 lg:gap-0 lg:flex-row justify-end items-center text-sm lg:text-xl`}
       >
         <Search />
         <div>
-          <Link to="/">Home</Link>
+          <Link onClick={() => toggle()} to="/">
+            Home
+          </Link>
         </div>
         <div>
-          <Link to="/catagories/all">Courses</Link>
+          <Link onClick={() => toggle()} to="/catagories/all">
+            Courses
+          </Link>
         </div>
         <div>
-          <Link to="/About">About Us</Link>
+          <Link onClick={() => toggle()} to="/About">
+            About Us
+          </Link>
         </div>
 
         {user && user.isAdmin && (
           <div>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link onClick={() => toggle()} to="/dashboard">
+              Dashboard
+            </Link>
           </div>
         )}
         {user && <Dropdown />}
         {!user && (
           <div>
-            <Link to="/login">
+            <Link onClick={() => toggle()} to="/login">
               <span className="bg-five text-[white] p-2 rounded">Login</span>
             </Link>
           </div>
