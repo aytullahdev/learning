@@ -194,8 +194,8 @@ const CourseDetails = () => {
               </div>
             </div>
           </div>
-          <div class="block  md:hidden"></div>
-          <div className="flex justify-center ">
+          <div class=""></div>
+          <div className="  md:hidden  flex justify-center ">
             <div className=" shadow rounded w-2/3  ">
               <div className="">
                 <img className="mx-auto " src={courseData.img} alt="" />
