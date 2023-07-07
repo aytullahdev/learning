@@ -168,6 +168,7 @@ const getCourses = asyncHandler(async (req, res) => {
 });
 const getCourse = asyncHandler(async (req, res) => {
   const id = req.params.id;
+  console.log(id);
   if (!mongoose.isValidObjectId(id)) {
     res.status(400);
     throw new Error("Object is isn't valid");
